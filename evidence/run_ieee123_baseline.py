@@ -21,8 +21,8 @@ def run(root, output):
     hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     from dss import DSS
     d=DSS.NewContext()
-    d.Text.Command("clear")
-    d.Text.Command(f'compile "{root / "IEEE123Master.dss"}"')
+    d.Text.Command = "clear"
+    d.Text.Command = f'compile "{root / "IEEE123Master.dss"}"'
     if not d.ActiveCircuit.Name: raise RuntimeError("No circuit compiled")
     results=[]
     # Distinguish solver convergence from controller convergence; no silent defaults.
@@ -30,7 +30,7 @@ def run(root, output):
         ("static_off",["set mode=snapshot","set controlmode=off","set maxiterations=100","solve"]),
         ("static_controls",["set mode=snapshot","set controlmode=static","set maxiterations=100","set maxcontroliter=100","solve"]),
     ]:
-        for cmd in cmds: d.Text.Command(cmd)
+        for cmd in cmds: d.Text.Command = cmd
         sol=d.ActiveCircuit.Solution
         ok=bool(sol.Converged)
         v=list(map(float,d.ActiveCircuit.AllBusVmagPu))
