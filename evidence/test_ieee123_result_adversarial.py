@@ -34,6 +34,12 @@ class TestIndependentValidator(unittest.TestCase):
  def test_reject_too_few_nodes(self):
   x=copy.deepcopy(BASE);x["scenarios"][0]["node_count"]=2
   with self.assertRaises(ValueError):validate(x)
+ def test_reject_missing_validation_flags(self):
+  x=copy.deepcopy(BASE);del x["emt_validated"]
+  with self.assertRaises(ValueError):validate(x)
+ def test_reject_inverted_voltage_extrema(self):
+  x=copy.deepcopy(BASE);x["scenarios"][0]["vmin_pu"]=1.10
+  with self.assertRaises(ValueError):validate(x)
  def test_reject_nonfinite_power(self):
   x=copy.deepcopy(BASE);x["scenarios"][1]["total_power_kw_kvar"]=[float("inf"),0.0]
   with self.assertRaises(ValueError):validate(x)
