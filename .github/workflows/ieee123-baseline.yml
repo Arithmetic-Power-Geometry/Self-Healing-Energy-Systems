@@ -51,7 +51,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/ieee123_baseline_log.txt evidence/ieee123_baseline_result.json evidence/ieee123_ci_run_metadata.txt
+          git add -A -- evidence/ieee123_*
           if ! git diff --cached --quiet; then
             git commit -m "Gate 3: archive IEEE123 CI simulation evidence"
             git push origin "HEAD:${GITHUB_REF_NAME}"
