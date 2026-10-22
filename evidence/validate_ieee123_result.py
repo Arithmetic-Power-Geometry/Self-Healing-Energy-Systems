@@ -30,7 +30,7 @@ def validate(result):
         if not 0.5 <= lo <= hi <= 1.5:
             raise ValueError("Voltage bounds violated")
         power = row.get("total_power_kw_kvar")
-        if not isinstance(power, list) or len(power) != 2 or any(not isinstance(x, (int, float)) or not math.isfinite(x) for x in power):
+        if not isinstance(power, list) or len(power) != 2 or any(not isinstance(x, (int, float)) or isinstance(x, bool) or not math.isfinite(x) for x in power):
             raise ValueError("Invalid feeder power")
     return True
 
