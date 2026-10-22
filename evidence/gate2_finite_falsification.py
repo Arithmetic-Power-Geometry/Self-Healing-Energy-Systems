@@ -60,6 +60,8 @@ def run():
         subsets=[set(c) for k in range(1,n) for c in combinations(range(n),k)]
         test_bank=list(product((0,1),repeat=n))[1:]
         for actions in combinations(subsets,2):
+            if set.union(*actions) != set(range(n)):
+                continue  # otherwise some true state has no safe action; decision may be impossible even with full ID
             for tests in combinations(test_bank,2):
                 dc=worst_cost(range(n),tests,actions)
                 ic=worst_cost(range(n),tests,actions,True)
