@@ -1,0 +1,5 @@
+# Parallel evidence and bibliography: three fault locations
+
+Executed locally on 2026-10-22 with Python, deterministic seed 20261022, 12,000 synthetic scenarios with three fault locations each and shared primary/backup settings. Results: nominal accepted 3497; nominal accepted but failing under 30 percent fault-current reduction and 40 ms added delay 2585; derating-aware accepted 937; derating-aware failures against the identical assumed scenario 0. The latter is a deterministic construction, not independent physical validation. Fault currents are random, not obtained from OpenDSS, short-circuit equations, EMT, or relay measurements. No claim of IEEE123 execution.
+
+Three verified nonduplicate bibliographic entries: Johansson et al. (2025), IET GTD, DOI 10.1049/gtd2.13354 (Wiley full text); Li/Wu/Wang (2026), IEEE TIE, DOI 10.1109/TIE.2025.3594454 (Aalborg metadata, CHIL); Maharjan et al. (2025), IEEE TSG, DOI 10.1109/TSG.2025.3536847 (national laboratory metadata, IEEE123 restoration). Last study is a severe novelty comparator for frequency-aware IEEE123 restoration. Master count 51 including standards and reports. Gate 3 OPEN, manuscript LOCKED.
