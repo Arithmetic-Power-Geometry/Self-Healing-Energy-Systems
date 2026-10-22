@@ -1,0 +1,6 @@
+Run date: 2026-10-22
+Command: python3 gate2_finite_falsification.py
+First run: assertion failed because safety regions did not cover all possible worlds; this falsifies unqualified decision-cost <= identification-cost.
+Corrected run: PASS cases=2754 strict=1596 decision_impossible=1035
+Canonical witness: decision worst cost=1, identification worst cost=2.
+Interpretation: abstract finite-state, no power flow or field data; not a novelty result.
