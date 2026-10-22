@@ -13,7 +13,7 @@
 - *A General Control and Synchronization Framework for Grid-Forming Inverters with Current Limiters Under Asymmetrical Faults*, IEEE TPEL early access (2026), DOI 10.1109/TPEL.2026.3731144, https://ieeexplore.ieee.org/abstract/document/11680581 . Fault critical clearing and synchronization; experimental tests.
 
 ## Research decision
-Previous master.bib 19 records; two appended with verified author lists: **21 records** (18 journal articles, 2 conference proceedings, 1 misc, 1 technical report = actually 17 articles? Recount directly from BibTeX before publishing summary). Do not misrepresent abstract screening as full-text study. Six candidates remain outside master pending author metadata verification. H2's broad protection-aware claim is **not novel as stated**; must narrow to a precisely specified, provable *switching-action-specific safety certificate* jointly covering current-limited GFM, cold-load pickup, and relay selectivity, and then search for that exact intersection.
+Previous master.bib 19 records; two appended with verified author lists: **21 records** (17 journal articles, 2 conference proceedings, 1 misc, 1 technical report). Do not misrepresent abstract screening as full-text study. Six candidates remain outside master pending author metadata verification. H2's broad protection-aware claim is **not novel as stated**; must narrow to a precisely specified, provable *switching-action-specific safety certificate* jointly covering current-limited GFM, cold-load pickup, and relay selectivity, and then search for that exact intersection.
 
 ## Next validation
 Actual IEEE123 static run with corrected DSS-Python API; independent benchmark; physical GFM/relay models and H2 falsification. Gate 3 open, manuscript locked.
