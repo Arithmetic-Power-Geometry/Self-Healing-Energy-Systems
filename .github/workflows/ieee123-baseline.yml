@@ -6,6 +6,7 @@ on:
       - "evidence/run_ieee123_baseline.py"
       - "evidence/test_ieee123_preflight.py"
       - "evidence/test_ieee123_api_contract.py"
+      - "evidence/validate_ieee123_result.py"
       - ".github/workflows/ieee123-baseline.yml"
 permissions:
   contents: write
@@ -19,7 +20,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Compile Python sources before execution
-        run: python -m py_compile evidence/run_ieee123_baseline.py evidence/test_ieee123_preflight.py
+        run: python -m py_compile evidence/run_ieee123_baseline.py evidence/test_ieee123_preflight.py evidence/test_ieee123_api_contract.py evidence/validate_ieee123_result.py
       - name: DSS-Python API contract regression tests
         run: python -m unittest discover -s evidence -p "test_ieee123_api_contract.py" -v
       - name: Dependency parser regression tests
@@ -44,6 +45,8 @@ jobs:
         run: |
           set -o pipefail
           python evidence/run_ieee123_baseline.py --feeder /tmp/opendss/Distrib/IEEETestCases/123Bus --output evidence/ieee123_baseline_result.json 2>&1 | tee evidence/ieee123_baseline_log.txt
+      - name: Independently validate simulation result JSON
+        run: python evidence/validate_ieee123_result.py evidence/ieee123_baseline_result.json
       - name: Record CI execution metadata
         if: always()
         shell: bash
