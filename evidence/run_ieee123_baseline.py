@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Fail-closed IEEE123 three-phase load-flow diagnostic. No transient/relay claims."""
-import argparse, hashlib, json, pathlib, re, traceback
+import argparse, hashlib, json, math, pathlib, re, traceback
 
 def deps(root, filename, seen=None):
     root=root.resolve(); seen=set() if seen is None else seen
@@ -34,7 +34,7 @@ def run(root, output):
         sol=d.ActiveCircuit.Solution
         ok=bool(sol.Converged)
         v=list(map(float,d.ActiveCircuit.AllBusVmagPu))
-        row={"scenario":name,"converged":ok,"node_count":len(v),
+        if not v or any(not math.isfinite(x) for x in v):\n            raise RuntimeError(f"Missing or nonfinite per-unit voltages in {name}")\n        if not all(0.5 <= x <= 1.5 for x in v):\n            raise RuntimeError(f"Implausible IEEE123 voltage range in {name}: {min(v)}..{max(v)}")\n        row={"scenario":name,"converged":ok,"node_count":len(v),
              "iterations":int(sol.Iterations),"control_iterations":int(sol.ControlIterations),
              "vmin_pu":min(v) if v else None,"vmax_pu":max(v) if v else None,
              "total_power_kw_kvar":list(map(float,d.ActiveCircuit.TotalPower))}
