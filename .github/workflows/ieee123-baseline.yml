@@ -5,6 +5,7 @@ on:
     paths:
       - "evidence/run_ieee123_baseline.py"
       - "evidence/test_ieee123_preflight.py"
+      - "evidence/test_ieee123_api_contract.py"
       - ".github/workflows/ieee123-baseline.yml"
 permissions:
   contents: write
@@ -19,6 +20,8 @@ jobs:
           python-version: "3.11"
       - name: Compile Python sources before execution
         run: python -m py_compile evidence/run_ieee123_baseline.py evidence/test_ieee123_preflight.py
+      - name: DSS-Python API contract regression tests
+        run: python -m unittest discover -s evidence -p "test_ieee123_api_contract.py" -v
       - name: Dependency parser regression tests
         run: python -m unittest discover -s evidence -p "test_ieee123_preflight.py" -v
       - name: Install pinned DSS-Python
