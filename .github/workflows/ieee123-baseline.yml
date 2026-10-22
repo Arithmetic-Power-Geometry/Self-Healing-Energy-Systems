@@ -16,24 +16,24 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install solver
+      - name: Install pinned DSS-Python
         run: python -m pip install dss-python==0.15.7
-      - name: Obtain upstream IEEE123 source (revision pinned)
+      - name: Fetch pinned upstream feeder revision
         run: |
-          git clone --filter=blob:none --no-checkout https://github.com/tshort/OpenDSS.git /tmp/opendss
+          git clone --filter=blob:none --sparse https://github.com/tshort/OpenDSS.git /tmp/opendss
           cd /tmp/opendss
-          git checkout 5005c668a72d20775f4c2d060feebb2866ba1d38
-          git sparse-checkout init --cone
           git sparse-checkout set Distrib/IEEETestCases/123Bus
-          git checkout
+          git checkout 5005c668a72d20775f4c2d060feebb2866ba1d38
           find Distrib/IEEETestCases/123Bus -maxdepth 1 -type f -printf '%f\n' | sort
-      - name: Validate complete dependencies and execute power flow
+      - name: Static convergence and provenance test
         run: |
-          python evidence/run_ieee123_baseline.py --feeder /tmp/opendss/Distrib/IEEETestCases/123Bus --output evidence/ieee123_baseline_result.json
-      - name: Upload evidence if produced
+          python evidence/run_ieee123_baseline.py --feeder /tmp/opendss/Distrib/IEEETestCases/123Bus --output evidence/ieee123_baseline_result.json 2>&1 | tee evidence/ieee123_baseline_log.txt
+      - name: Upload log and result, including failures
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ieee123-baseline-result
-          path: evidence/ieee123_baseline_result.json
+          name: ieee123-gate3-diagnostics
+          path: |
+            evidence/ieee123_baseline_log.txt
+            evidence/ieee123_baseline_result.json
           if-no-files-found: warn
