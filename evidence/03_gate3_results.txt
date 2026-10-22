@@ -1,0 +1,4 @@
+Executed locally 2026-10-22: python3 certificate.py
+cases=135 certified=67 rejected=68 false_safe=0 conservative_on_sample=1
+Feeder acquisition attempt: raw.githubusercontent.com DNS unavailable; no feeder model downloaded.
+No OpenDSS/EMT, relay model or physical-grid safety validation.
