@@ -40,6 +40,9 @@ class TestIndependentValidator(unittest.TestCase):
  def test_reject_inverted_voltage_extrema(self):
   x=copy.deepcopy(BASE);x["scenarios"][0]["vmin_pu"]=1.10
   with self.assertRaises(ValueError):validate(x)
+ def test_reject_boolean_power(self):
+  x=copy.deepcopy(BASE);x["scenarios"][0]["total_power_kw_kvar"]=[True,0.0]
+  with self.assertRaises(ValueError):validate(x)
  def test_reject_nonfinite_power(self):
   x=copy.deepcopy(BASE);x["scenarios"][1]["total_power_kw_kvar"]=[float("inf"),0.0]
   with self.assertRaises(ValueError):validate(x)
