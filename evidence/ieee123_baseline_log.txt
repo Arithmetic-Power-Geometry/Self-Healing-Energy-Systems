@@ -1,8 +1,42 @@
-Traceback (most recent call last):
-  File "/home/runner/work/Self-Healing-Energy-Systems/Self-Healing-Energy-Systems/evidence/run_ieee123_baseline.py", line 59, in main
-    try:run(args.feeder,args.output)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Self-Healing-Energy-Systems/Self-Healing-Energy-Systems/evidence/run_ieee123_baseline.py", line 24, in run
-    d.Text.Command("clear")
-TypeError: 'str' object is not callable
-HARD FAILURE: TypeError("'str' object is not callable")
+{
+  "status": "PASS_STATIC_ONLY",
+  "feeder": "IEEE123",
+  "solver_version": "DSS C-API Library version 0.14.5 revision 87d85c2622c8281b92255335bc7c09b11191b21d based on OpenDSS SVN 3723 [FPC 3.2.2] (64-bit build) MVMULT INCREMENTAL_Y CONTEXT_API PM 20240329033721; License Status: Open \nDSS-Python version: 0.15.7",
+  "sha256": {
+    "IEEE123Loads.DSS": "fd28f52836205506a1980b52c5a7e12ca585aa626c52a6249502c1c3b2fc2255",
+    "IEEE123Master.dss": "21bfab1a3c956d347dc491436ae839281bf7db4ececc405e10ddeb04d3ab00ec",
+    "IEEE123Regulators.DSS": "cd6ad77980dc018631ce39faab528afce40b0b9a50a6bc1c9ac8049ffb8207d7",
+    "IEEELinecodes.DSS": "4bc8e3a0b24ad7b1cb4321f1c3b6c8458b646dd3a83b3cd11cccc02444624cb2"
+  },
+  "scenarios": [
+    {
+      "scenario": "static_off",
+      "converged": true,
+      "node_count": 278,
+      "iterations": 3,
+      "control_iterations": 1,
+      "vmin_pu": 0.9265380197575005,
+      "vmax_pu": 0.9999938776441388,
+      "total_power_kw_kvar": [
+        -3482.6846852337558,
+        -1358.0693921089373
+      ]
+    },
+    {
+      "scenario": "static_controls",
+      "converged": true,
+      "node_count": 278,
+      "iterations": 19,
+      "control_iterations": 6,
+      "vmin_pu": 0.9792109289804353,
+      "vmax_pu": 1.0499610277736173,
+      "total_power_kw_kvar": [
+        -3615.2419223985175,
+        -1311.5149870128353
+      ]
+    }
+  ],
+  "gfm_dynamics_validated": false,
+  "protection_validated": false,
+  "emt_validated": false
+}
