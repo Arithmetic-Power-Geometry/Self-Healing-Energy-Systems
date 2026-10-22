@@ -19,6 +19,9 @@ def run(root, output):
     root=root.resolve()
     files=deps(root,"IEEE123Master.dss")
     hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
+    # A stale PASS file must never survive a failed rerun.
+    output.parent.mkdir(parents=True,exist_ok=True)
+    output.unlink(missing_ok=True)
     from dss import DSS
     d=DSS.NewContext()
     d.Text.Command = "clear"
@@ -34,6 +37,8 @@ def run(root, output):
         sol=d.ActiveCircuit.Solution
         ok=bool(sol.Converged)
         v=list(map(float,d.ActiveCircuit.AllBusVmagPu))
+        if not ok:
+            raise RuntimeError(f"IEEE123 solver did not converge in {name}")
         if not v or any(not math.isfinite(x) for x in v):
             raise RuntimeError(f"Missing or nonfinite per-unit voltages in {name}")
         if not all(0.5 <= x <= 1.5 for x in v):
