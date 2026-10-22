@@ -27,6 +27,7 @@ jobs:
           find Distrib/IEEETestCases/123Bus -maxdepth 1 -type f -printf '%f\n' | sort
       - name: Static convergence and provenance test
         run: |
+          set -o pipefail
           python evidence/run_ieee123_baseline.py --feeder /tmp/opendss/Distrib/IEEETestCases/123Bus --output evidence/ieee123_baseline_result.json 2>&1 | tee evidence/ieee123_baseline_log.txt
       - name: Upload log and result, including failures
         if: always()
