@@ -34,7 +34,11 @@ def run(root, output):
         sol=d.ActiveCircuit.Solution
         ok=bool(sol.Converged)
         v=list(map(float,d.ActiveCircuit.AllBusVmagPu))
-        if not v or any(not math.isfinite(x) for x in v):\n            raise RuntimeError(f"Missing or nonfinite per-unit voltages in {name}")\n        if not all(0.5 <= x <= 1.5 for x in v):\n            raise RuntimeError(f"Implausible IEEE123 voltage range in {name}: {min(v)}..{max(v)}")\n        row={"scenario":name,"converged":ok,"node_count":len(v),
+        if not v or any(not math.isfinite(x) for x in v):
+            raise RuntimeError(f"Missing or nonfinite per-unit voltages in {name}")
+        if not all(0.5 <= x <= 1.5 for x in v):
+            raise RuntimeError(f"Implausible IEEE123 voltage range in {name}: {min(v)}..{max(v)}")
+        row={"scenario":name,"converged":ok,"node_count":len(v),
              "iterations":int(sol.Iterations),"control_iterations":int(sol.ControlIterations),
              "vmin_pu":min(v) if v else None,"vmax_pu":max(v) if v else None,
              "total_power_kw_kvar":list(map(float,d.ActiveCircuit.TotalPower))}
