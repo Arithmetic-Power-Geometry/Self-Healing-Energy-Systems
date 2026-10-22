@@ -25,6 +25,13 @@ jobs:
           git sparse-checkout set Distrib/IEEETestCases/123Bus
           git checkout 5005c668a72d20775f4c2d060feebb2866ba1d38
           find Distrib/IEEETestCases/123Bus -maxdepth 1 -type f -printf '%f\n' | sort
+      - name: Repair upstream Linux filename case mismatch without changing electrical data
+        run: |
+          cd /tmp/opendss/Distrib/IEEETestCases/123Bus
+          test -f IEEELineCodes.DSS
+          test ! -f IEEELinecodes.DSS
+          cp IEEELineCodes.DSS IEEELinecodes.DSS
+          sha256sum IEEELineCodes.DSS IEEELinecodes.DSS
       - name: Static convergence and provenance test
         run: |
           set -o pipefail
