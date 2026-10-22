@@ -19,6 +19,18 @@ class TestDssCommandApi(unittest.TestCase):
         ]
         self.assertFalse(calls, "DSS-Python Text.Command is a settable property, not a callable")
 
+    def test_stale_result_removed_before_solver(self):
+        tree = ast.parse(SOURCE.read_text(encoding="utf-8"))
+        run_fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "run")
+        source = ast.get_source_segment(SOURCE.read_text(encoding="utf-8"), run_fn)
+        self.assertIn("output.unlink(missing_ok=True)", source)
+        self.assertLess(source.index("output.unlink(missing_ok=True)"), source.index("from dss import DSS"))
+
+    def test_convergence_checked_before_voltage_approval(self):
+        source = SOURCE.read_text(encoding="utf-8")
+        self.assertIn('if not ok:', source)
+        self.assertLess(source.index('if not ok:'), source.index('if not v or any('))
+
     def test_assignments_exist(self):
         tree = ast.parse(SOURCE.read_text(encoding="utf-8"))
         assignments = [
