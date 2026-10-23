@@ -1,0 +1,43 @@
+name: SHES P9 feeder proxy relay audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/feeder_certificate_p9.py"
+      - "shes/test_feeder_certificate_p9.py"
+      - "shes/validate_p9.py"
+      - ".github/workflows/shes-p9-certificate.yml"
+permissions:
+  contents: write
+jobs:
+  certificate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit and adversarial tests
+        run: python -m unittest discover -s shes -p test_feeder_certificate_p9.py -v
+      - name: Evaluate shared feeder-derived proxy population
+        run: python -m shes.feeder_certificate_p9
+      - name: Independently validate result
+        run: python shes/validate_p9.py shes/ieee123_p9_screens.json
+      - name: Commit verified JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shes/ieee123_p9_screens.json
+          if ! git diff --cached --quiet; then
+            git commit -m "SHES P9: archive verified model-relative relay screen matrices"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p9-certificate-json
+          path: shes/ieee123_p9_screens.json
+          if-no-files-found: warn
