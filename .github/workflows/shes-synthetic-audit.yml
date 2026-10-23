@@ -5,6 +5,7 @@ on:
     paths:
       - "shes/audit_synthetic.py"
       - "shes/test_synthetic_audit.py"
+      - "shes/compare_time_domain.py"
       - ".github/workflows/shes-synthetic-audit.yml"
 permissions:
   contents: read
@@ -18,14 +19,18 @@ jobs:
         with:
           python-version: "3.11"
       - name: Compile audit
-        run: python -m py_compile shes/audit_synthetic.py shes/test_synthetic_audit.py
+        run: python -m py_compile shes/audit_synthetic.py shes/test_synthetic_audit.py shes/compare_time_domain.py
       - name: Test independent corner oracle and contingency
         run: python -m unittest discover -s shes -p test_synthetic_audit.py -v
       - name: Reproduce source experiments and sensitivity
         run: python shes/audit_synthetic.py > shes_synthetic_results.json
+      - name: Compare static and full-reset relay models
+        run: python shes/compare_time_domain.py > shes_time_domain_comparison.json
       - name: Upload reproducible result JSON
         uses: actions/upload-artifact@v4
         with:
           name: shes-synthetic-results
-          path: shes_synthetic_results.json
+          path: |
+            shes_synthetic_results.json
+            shes_time_domain_comparison.json
           if-no-files-found: error
