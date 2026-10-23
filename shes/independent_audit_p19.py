@@ -39,8 +39,8 @@ def audit(root):
  # Distinct independent direct calculation: positive interval endpoint inequalities.
  trace=[Segment(0.,10.,2.)]
  assert math.isfinite(time_at_gamma(trace,.8,.5,.1))
- assert rectangular_certificate(trace,trace,.5,.5,.1,.2,(.8,1.),(.8,1.),
-    (0.,.05),(0.,.05),10.,10.,0.) is False or True
+ assert isinstance(rectangular_certificate(trace,trace,.5,.5,.1,.2,(.8,1.),(.8,1.),
+    (0.,.05),(0.,.05),10.,10.,0.),bool)
  # This is a consistency audit, not a formal verification of source-level proof.
  return {"audit":"P19 source-level independent deterministic replay",
    "source_sha256":{p:hashlib.sha256((root/p).read_bytes()).hexdigest()
