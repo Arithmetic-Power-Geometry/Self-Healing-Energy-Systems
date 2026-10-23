@@ -10,7 +10,7 @@ Bus 60: 12 element edges; terminal primary candidate Line.l58; backup candidate 
 Bus 83: 23 element edges; terminal primary candidate Line.l84; backup candidate Line.l82.
 The bus 83 path includes the one-phase Transformer.reg4a, despite an element-level phase-3-looking path. Therefore graph adjacency alone is insufficient to establish phase-specific electrical continuity.
 
-## New P14 methods
+## Verified CI result\nGitHub Actions run 39965803372 SUCCESS: https://github.com/Arithmetic-Power-Geometry/Self-Healing-Energy-Systems/actions/runs/39965803372\nSix adversarial tests passed; pinned upstream commit and dss-python version checked; 134 element records (126 lines, 8 transformers); zero open-conductor elements reported in the compiled baseline; line-only source-to-target phase reachability remains unresolved for both 60 and 83 because transformer winding transfers were deliberately not inferred; no physical authorizations. Artifact ID 12507430022. Earlier failed runs 39965585935 and 39965687646 identified and corrected an open-conductor pair representation defect and an output-path issue.\n\n## New P14 methods
 - Extract line/transformer terminal bus-node strings, conductor counts, element enablement and conductor-open flags directly from OpenDSS.
 - Construct line-only phase-indexed candidate edges by conductor position with strict rejection of invalid or open conductors.
 - Do not silently infer transformer/regulator winding transfer.
