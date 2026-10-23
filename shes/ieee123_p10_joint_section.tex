@@ -1,0 +1,26 @@
+\subsection{Joint frequency and relay screening with a fail-closed physical gate}
+\label{sec:p10-joint}
+We evaluated six feeder-derived terminal-current proxy cases (buses 60 and 83, three fault resistances), 80 seeded hypothetical settings per case, and three reset semantics, yielding 1,440 model-relative configurations. The joint screen requires both the sign-aware scalar frequency envelope
+\[
+\max\!\left\{|f_0|,\left|qf_0+(1-q)u_-/D\right|,
+\left|qf_0+(1-q)u_+/D\right|\right\}\le f_{\max},
+\quad q=e^{-DT/M},
+\]
+and finite-time primary and sustained-fault counterfactual backup coordination under independent current derating and breaker-delay corners. The stipulated relay trace has two above-pickup pulses separated by a below-pickup interval, with full reset, hold or linear reset semantics. Frequency inertia, damping, net-power intervals, inverter behavior and relay settings are hypothetical, not calibrated to the feeder or equipment.
+\begin{table}[H]\centering\small
+\caption{Complete confusion matrices against the stipulated joint independent-corner oracle (480 cases per reset). No physical restoration approval is implied.}\label{tab:p10-joint}
+\begin{tabular}{llrrrr}\toprule
+Reset & Screen & TP & FP & FN & TN\\\midrule
+Full & Nominal & 5 & 65 & 0 & 410\\
+Full & Common derating & 5 & 2 & 0 & 473\\
+Full & Independent corners & 5 & 0 & 0 & 475\\
+Hold & Nominal & 4 & 104 & 0 & 372\\
+Hold & Common derating & 4 & 5 & 0 & 471\\
+Hold & Independent corners & 4 & 0 & 0 & 476\\
+Linear & Nominal & 9 & 64 & 0 & 407\\
+Linear & Common derating & 9 & 3 & 0 & 468\\
+Linear & Independent corners & 9 & 0 & 0 & 471\\\bottomrule
+\end{tabular}
+\end{table}
+The hypothetical frequency screen passes 1,097 of 1,440 configurations, while only 18 pass the joint model. Nominal and common-derating screens respectively generate 233 and ten false approvals relative to the stipulated joint corner oracle. Independent-corner agreement is by construction, not a field reliability estimate. The independent JSON validator checks all nine contingency matrices and the explicit physical-evidence gate.
+The feeder artifact does not establish phase-continuous energized paths, switching feasibility, current orientation at installed protective CTs, relay inventory and settings, calibrated inverter current limits, or breaker delays. The physical gate therefore issues \emph{zero} authorizations. The results establish a conditional model-relative certificate and counterexamples, not a physically validated restoration action.
