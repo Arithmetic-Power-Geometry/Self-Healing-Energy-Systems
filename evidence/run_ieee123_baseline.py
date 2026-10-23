@@ -17,6 +17,7 @@ def deps(root, filename, seen=None):
 
 def run(root, output):
     root=root.resolve()
+    output=output.resolve()  # OpenDSS compile may change the process working directory.
     files=deps(root,"IEEE123Master.dss")
     hashes={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     # A stale PASS file must never survive a failed rerun.
