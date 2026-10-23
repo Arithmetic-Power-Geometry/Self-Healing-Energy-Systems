@@ -1,0 +1,27 @@
+\subsection{Feeder-derived protection proxy audit}\label{sec:p9-proxy}
+We evaluated 1,200 seeded hypothetical relay configurations, constructed from six IEEE 123-bus fault-current cases at buses 60 and 83 and 200 relay-setting draws per case. The input magnitudes are conductor-1 terminal-1 current proxies at candidate line boundaries, not verified CT or relay inputs.
+\begin{table}[H]\centering\caption{Constant-current corner-oracle confusion matrix (1,200 configurations).}\label{tab:p9-corners}
+\begin{tabular}{lrrrr}\toprule
+Screen & TP & FP & FN & TN\\\midrule
+Nominal & 24 & 189 & 0 & 987\\
+Common derating & 24 & 7 & 0 & 1169\\
+Independent box & 24 & 0 & 0 & 1176\\
+Full-reset trace & 16 & 25 & 8 & 1151\\\bottomrule
+\end{tabular}\end{table}
+\begin{table}[H]\centering\caption{Full-reset trace-oracle confusion matrix (1,200 configurations).}\label{tab:p9-traces}
+\begin{tabular}{lrrrr}\toprule
+Screen & TP & FP & FN & TN\\\midrule
+Nominal & 41 & 172 & 0 & 987\\
+Common derating & 16 & 15 & 25 & 1144\\
+Independent box & 16 & 8 & 25 & 1151\\
+Full-reset trace & 41 & 0 & 0 & 1159\\\bottomrule
+\end{tabular}\end{table}
+The independent-box screen matches the constant-current independent-corner oracle by monotonicity and construction, but eight approved configurations fail the distinct full-reset trace model. The latter incorporates a below-pickup interval that resets inverse-time timer progress. These are model-relative counterexamples, not empirical device failure rates.
+\begin{table}[H]\centering\caption{Screen approvals by hypothetical minimum current factor.}\label{tab:p9-sensitivity}
+\begin{tabular}{rrrrr}\toprule
+Factor & Nominal & Common & Box & Full-reset\\\midrule
+0.6 & 74 & 5 & 3 & 9\\
+0.7 & 72 & 11 & 9 & 17\\
+0.8 & 67 & 15 & 12 & 15\\\bottomrule
+\end{tabular}\end{table}
+No installed relay, energized phase-continuous protection path, breaker calibration, restoration switching feasibility, or joint frequency certificate has been verified. Accordingly, no actual restoration action is certified safe by these experiments.
