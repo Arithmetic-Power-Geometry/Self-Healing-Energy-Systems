@@ -1,0 +1,45 @@
+name: SHES P19 independent audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/independent_audit_p19.py"
+      - "shes/test_independent_audit_p19.py"
+      - ".github/workflows/shes-p19-independent-audit.yml"
+permissions:
+  contents: read
+jobs:
+  independent-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run full P13-P19 regression and independent replay
+        run: python -m unittest shes.test_independent_audit_p19 shes.test_component_ablation_p18 shes.test_unified_benchmark_p17 shes.test_robust_continuum_p13 shes.test_phase_topology_p14 shes.test_switch_sensitivity_p15 shes.test_winding_fault_p16 -v
+      - name: Recompute exact model results and source readiness
+        run: python -m shes.independent_audit_p19 --root shes --output shes/p19_audit_evidence.json | tee shes/p19_summary.json
+      - name: Independently enforce fail-closed claims
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("shes/p19_audit_evidence.json"))
+          assert not d["complete_manuscript_build_ready"]
+          assert "references.bib" in d["missing_manuscript_assets"]
+          assert "main.tex:complete_documentclass" in d["missing_manuscript_assets"]
+          assert d["physical_protection_authorizations"]==0
+          assert d["p17_recomputed"]["rectangle"]["true_approvals"]==22
+          assert d["p18_recomputed"]["coordination_margin"]["false_approvals"]==22
+          assert d["p18_recomputed"]["frequency"]["false_approvals"]==14
+          print("P19 source and model audit PASS; full manuscript build BLOCKED")
+          PY
+      - name: Upload audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p19-independent-audit
+          path: |
+            shes/p19_audit_evidence.json
+            shes/p19_summary.json
+          if-no-files-found: error
