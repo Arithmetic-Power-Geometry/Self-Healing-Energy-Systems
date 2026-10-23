@@ -1,0 +1,18 @@
+\subsection{Reproducibility audit and cross-screen accounting}
+\label{sec:repro-audit}
+We retain the original synthetic populations separately: their random seeds, sampling distributions, and safety predicates differ, so pooling counts would have no statistical meaning. The independent-current study tests three synthetic fault locations per case and enumerates primary and backup multipliers independently. Under its specified monotone inverse-time curve, the independent-box rule has a direct extremal guarantee; its zero violations against the same corners are a mathematical consequence of the test construction, not an out-of-sample estimate of relay reliability.
+
+The finite-backup experiment provides an instructive non-nesting result. Of 20,000 cases, 3,104 are approved by both the nominal and common-derating rules, 3,530 by the nominal rule alone, 129 by the common-derating rule alone, and 13,237 by neither. The resulting marginal totals are 6,634 nominal approvals and 3,233 common-derating approvals. Thus a larger or smaller approval count is not by itself evidence that one predicate dominates another. In this experiment, derating changes both primary and backup operating times and can increase the selectivity margin.
+
+\begin{table}[H]
+\centering
+\caption{Cross-classification of nominal and common-derating approvals in the 20,000-case finite-backup experiment. These are distinct from the independent-current study.}
+\label{tab:finite-cross}
+\begin{tabular}{lrrr}\toprule
+ & Common-derating approve & Common-derating reject & Total\\\midrule
+Nominal approve & 3,104 & 3,530 & 6,634\\
+Nominal reject & 129 & 13,237 & 13,366\\\midrule
+Total & 3,233 & 16,767 & 20,000\\\bottomrule
+\end{tabular}
+\end{table}
+A reproducibility audit runs the named source scripts with their recorded seeds and compares their JSON output to the reported aggregates. A separate sensitivity test uses one shared synthetic population to compare nominal, common-derating and independent-box screens against an enumerated independent-corner oracle at multiple derating bounds. The independent-box screen is expected to match that oracle under the stipulated monotonicity assumptions. These checks must not be confused with physical fault-current validation. In particular, a legacy inverse-time script increments its \texttt{robust\_unsafe} field by zero unconditionally; that field is not an independently measured violation count and should not be used as such.
