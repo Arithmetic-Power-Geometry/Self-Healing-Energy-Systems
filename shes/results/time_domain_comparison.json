@@ -1,0 +1,64 @@
+{
+  "cases": 4000,
+  "counterexamples_box_vs_time_domain": [
+    {
+      "backup_assertion": 1.2654936763127997,
+      "backup_high": 3.006099572435611,
+      "gap": 0.015147876644218378,
+      "index": 2,
+      "low_factor": 0.4751074070877871,
+      "primary_assertion": 1.116783807901897,
+      "primary_high": 1.9052710972495681,
+      "pulse": 0.25885908856490353
+    },
+    {
+      "backup_assertion": 2.0131754734392895,
+      "backup_high": 3.0896593735819393,
+      "gap": 0.2332218085911372,
+      "index": 55,
+      "low_factor": 0.4165187877285554,
+      "primary_assertion": 1.1715142604380389,
+      "primary_high": 2.4694860852679543,
+      "pulse": 0.17017871555875222
+    },
+    {
+      "backup_assertion": 1.8987258385943693,
+      "backup_high": 2.218922180777821,
+      "gap": 0.23445078907212072,
+      "index": 165,
+      "low_factor": 0.32729132667836214,
+      "primary_assertion": 0.8186587454853607,
+      "primary_high": 2.4554880985643184,
+      "pulse": 0.3410109956621585
+    }
+  ],
+  "counts": {
+    "box": {
+      "approved": 940,
+      "false_approval": 118,
+      "rejected_safe": 380,
+      "true_approval": 822
+    },
+    "common": {
+      "approved": 1110,
+      "false_approval": 189,
+      "rejected_safe": 281,
+      "true_approval": 921
+    },
+    "nominal": {
+      "approved": 2222,
+      "false_approval": 1035,
+      "rejected_safe": 15,
+      "true_approval": 1187
+    },
+    "time_domain": {
+      "approved": 1202,
+      "false_approval": 0,
+      "rejected_safe": 0,
+      "true_approval": 1202
+    }
+  },
+  "derating": 0.7,
+  "interpretation": "Full-reset piecewise-current synthetic oracle only. Different model than constant-current box.",
+  "seed": 20261023
+}

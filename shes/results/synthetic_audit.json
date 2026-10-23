@@ -1,0 +1,149 @@
+{
+  "finite_contingency": {
+    "both": 3104,
+    "neither": 13237,
+    "nominal_only": 3530,
+    "robust_only": 129
+  },
+  "independent_corner_comparison": [
+    {
+      "cases": 5000,
+      "delay": 0.04,
+      "gmin": 0.6,
+      "oracle_safe": 98,
+      "screens": {
+        "box": {
+          "approved": 98,
+          "false_approval": 0,
+          "rejected_safe": 0,
+          "true_approval": 98
+        },
+        "common": {
+          "approved": 174,
+          "false_approval": 76,
+          "rejected_safe": 0,
+          "true_approval": 98
+        },
+        "nominal": {
+          "approved": 1420,
+          "false_approval": 1322,
+          "rejected_safe": 0,
+          "true_approval": 98
+        }
+      },
+      "seed": 20261023
+    },
+    {
+      "cases": 5000,
+      "delay": 0.04,
+      "gmin": 0.7,
+      "oracle_safe": 271,
+      "screens": {
+        "box": {
+          "approved": 271,
+          "false_approval": 0,
+          "rejected_safe": 0,
+          "true_approval": 271
+        },
+        "common": {
+          "approved": 374,
+          "false_approval": 103,
+          "rejected_safe": 0,
+          "true_approval": 271
+        },
+        "nominal": {
+          "approved": 1420,
+          "false_approval": 1149,
+          "rejected_safe": 0,
+          "true_approval": 271
+        }
+      },
+      "seed": 20261023
+    },
+    {
+      "cases": 5000,
+      "delay": 0.04,
+      "gmin": 0.8,
+      "oracle_safe": 540,
+      "screens": {
+        "box": {
+          "approved": 540,
+          "false_approval": 0,
+          "rejected_safe": 0,
+          "true_approval": 540
+        },
+        "common": {
+          "approved": 649,
+          "false_approval": 109,
+          "rejected_safe": 0,
+          "true_approval": 540
+        },
+        "nominal": {
+          "approved": 1420,
+          "false_approval": 880,
+          "rejected_safe": 0,
+          "true_approval": 540
+        }
+      },
+      "seed": 20261023
+    }
+  ],
+  "notes": [
+    "Synthetic model-relative outcomes only; no field reliability estimate.",
+    "Box approval equals enumerated independent corners by monotonicity; zero false approvals is not independent validation.",
+    "Different source experiments have different populations and cannot be pooled.",
+    "The earlier inverse-time script sets robust_unsafe += 0 unconditionally; its zero is not an independently computed validation."
+  ],
+  "original_counts": {
+    "finite": {
+      "nominal_approved": 6634,
+      "nominal_coordination_failure": 299,
+      "nominal_deadline_failure": 1764,
+      "nominal_false_approvals": 3530,
+      "nominal_infinite_backup": 32,
+      "robust_approved": 3233,
+      "robust_false_approvals": 0
+    },
+    "independent": {
+      "box_robust": 1057,
+      "box_robust_fails_any": 0,
+      "endpoint_fails_any": 476,
+      "endpoint_robust": 1533,
+      "nominal": 5796,
+      "nominal_fails_any": 4739,
+      "total": 20000
+    },
+    "interrupted": {
+      "cases": 20000,
+      "dynamic_approved": 12678,
+      "dynamic_false_approvals": 0,
+      "static_approved": 19135,
+      "static_false_approvals": 6457
+    },
+    "inverse": {
+      "cases": 20000,
+      "coordination_failures_nominal": 402,
+      "nominal_approved": 10695,
+      "nominal_unsafe": 3208,
+      "robust_approved": 7656,
+      "robust_unsafe": 0
+    },
+    "pickup": {
+      "cases": 10000,
+      "nominal_approved": 5202,
+      "nominal_missed_trip": 3047,
+      "robust_approved": 2155,
+      "robust_missed_trip": 0
+    },
+    "scalar": {
+      "analytically_enclosed": 402,
+      "by_tau": {
+        "0.15": 134,
+        "0.4": 134,
+        "1.2": 134
+      },
+      "scope": "scalar ODE only",
+      "total": 2592
+    }
+  }
+}
