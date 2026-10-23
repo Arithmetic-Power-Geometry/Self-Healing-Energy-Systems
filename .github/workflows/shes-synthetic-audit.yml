@@ -8,7 +8,7 @@ on:
       - "shes/compare_time_domain.py"
       - ".github/workflows/shes-synthetic-audit.yml"
 permissions:
-  contents: read
+  contents: write
 jobs:
   audit:
     runs-on: ubuntu-24.04
@@ -26,6 +26,20 @@ jobs:
         run: python shes/audit_synthetic.py > shes_synthetic_results.json
       - name: Compare static and full-reset relay models
         run: python shes/compare_time_domain.py > shes_time_domain_comparison.json
+      - name: Archive verified JSON in repository
+        if: success()
+        run: |
+          mkdir -p shes/results
+          cp shes_synthetic_results.json shes/results/synthetic_audit.json
+          cp shes_time_domain_comparison.json shes/results/time_domain_comparison.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shes/results/synthetic_audit.json shes/results/time_domain_comparison.json
+          if ! git diff --cached --quiet; then
+            git commit -m "SHES P5: archive independently executed synthetic results"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
       - name: Upload reproducible result JSON
         uses: actions/upload-artifact@v4
         with:
