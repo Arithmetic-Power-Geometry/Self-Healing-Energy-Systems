@@ -1,4 +1,20 @@
 {
+  "candidate_relay_boundaries": {
+    "60": {
+      "candidate_backup_boundary": null,
+      "candidate_primary_boundary": null,
+      "path": null,
+      "protection_zone_validated": false,
+      "relay_installed_verified": false
+    },
+    "83": {
+      "candidate_backup_boundary": null,
+      "candidate_primary_boundary": null,
+      "path": null,
+      "protection_zone_validated": false,
+      "relay_installed_verified": false
+    }
+  },
   "cases": [
     {
       "bus": "150",
