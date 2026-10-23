@@ -1,0 +1,34 @@
+name: SHES P20 source readiness audit (not PDF build)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/p20_submission_gate.py"
+      - ".github/workflows/shes-p20-source-audit.yml"
+permissions:
+  contents: read
+jobs:
+  fail-closed-source-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Audit exact complete manuscript source requirements
+        run: python -m shes.p20_submission_gate --root shes | tee shes/p20_source_gate.json
+      - name: Verify manuscript remains blocked, without asserting a PDF build
+        run: |
+          python - <<'PY'
+          from shes.p20_submission_gate import audit
+          x=audit("shes")
+          assert not x["ready"], "Sources became available: switch to actual clean PDF build verification"
+          assert "references.bib" in x["missing"]
+          assert "main.tex:complete-document" in x["missing"]
+          print("P20 source audit PASS; clean GitHub PDF build NOT CERTIFIED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shes-p20-source-readiness-audit
+          path: shes/p20_source_gate.json
+          if-no-files-found: error
