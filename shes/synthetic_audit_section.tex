@@ -15,4 +15,32 @@ Nominal reject & 129 & 13,237 & 13,366\\\midrule
 Total & 3,233 & 16,767 & 20,000\\\bottomrule
 \end{tabular}
 \end{table}
+
+\begin{table}[H]\centering
+\caption{Common-population independent-current sensitivity audit (5,000 cases per derating floor; 40\,ms delay bound). Each oracle is defined by the stated corner set.}
+\label{tab:sensitivity-audit}
+\begin{tabular}{rrrrrr}\toprule
+$\gamma_{\min}$ & Oracle-safe & Nominal false & Common false & Box approvals & Box false\\\midrule
+0.60 & 98 & 1,322 & 76 & 98 & 0\\
+0.70 & 271 & 1,149 & 103 & 271 & 0\\
+0.80 & 540 & 880 & 109 & 540 & 0\\\bottomrule
+\end{tabular}
+\end{table}
+The same seeded 5,000 parameter draws are used at each derating floor. The box approvals coincide with the independent-corner oracle by construction and the assumed monotonicity; these figures measure certificate logic, not physical reliability.
+
+\begin{table}[H]\centering
+\caption{Comparison with a different, two-pulse full-reset inverse-time oracle (4,000 synthetic traces; derating floor 0.70). Constant-current screens are not guarantees for this time-varying model.}
+\label{tab:time-domain-audit}
+\begin{tabular}{lrrr}\toprule
+Screen & Approved & Approved but unsafe in trace model & Safe but rejected\\\midrule
+Nominal constant current & 2,222 & 1,035 & 15\\
+Common derating & 1,110 & 189 & 281\\
+Independent constant-current box & 940 & 118 & 380\\
+Full-reset time-domain oracle & 1,202 & 0 & 0\\\bottomrule
+\end{tabular}
+\end{table}
+The 118 box-screen false approvals are \emph{not} contradictions of its constant-current extremal theorem: the synthetic oracle includes a below-pickup interval and timer reset, neither of which belongs to the constant-current uncertainty box. The full-reset oracle has zero self-comparison errors tautologically, not as independent validation. A finite breaker opening delay is included in the comparison.
+
+The refined scalar envelope independently accepts 402 of 2,592 grid cases, while the finite-step RK4 surrogate check labels 486 cases safe, leaving 84 conservative rejections and zero sampled violations among refined approvals. The manuscript's earlier 396 approvals and 90 rejections refer to the \emph{older, looser} envelope; they should not be conflated with the refined result. RK4 trajectory sampling does not prove continuous-time or feeder safety.
+
 A reproducibility audit runs the named source scripts with their recorded seeds and compares their JSON output to the reported aggregates. A separate sensitivity test uses one shared synthetic population to compare nominal, common-derating and independent-box screens against an enumerated independent-corner oracle at multiple derating bounds. The independent-box screen is expected to match that oracle under the stipulated monotonicity assumptions. These checks must not be confused with physical fault-current validation. In particular, a legacy inverse-time script increments its \texttt{robust\_unsafe} field by zero unconditionally; that field is not an independently measured violation count and should not be used as such.
