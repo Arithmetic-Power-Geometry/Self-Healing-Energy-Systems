@@ -1,0 +1,35 @@
+name: SHES P11 cross-program reproducibility audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/audit_program_p11.py"
+      - "shes/validate_joint_p10.py"
+      - "shes/joint_certificate_p10.py"
+      - ".github/workflows/shes-p11-audit.yml"
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run P4 P8 P9 P10 regression suites
+        run: |
+          python -m unittest discover -s shes -p 'test_relay_time_domain.py' -v
+          python -m unittest discover -s shes -p 'test_topology_probes.py' -v
+          python -m unittest discover -s shes -p 'test_feeder_certificate_p9.py' -v
+          python -m unittest discover -s shes -p 'test_joint_certificate_p10.py' -v
+      - name: Independently audit archived counts, hashes, replay and scalar RK4
+        run: python -m shes.audit_program_p11 | tee shes/p11_audit_stdout.json
+      - name: Archive independent audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p11-independent-audit
+          path: shes/p11_audit_stdout.json
+          if-no-files-found: warn
