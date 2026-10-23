@@ -1,0 +1,18 @@
+\subsection{Expanded IEEE 123-bus topology and hypothetical protection boundaries}
+\label{sec:expanded-topology}
+We reconstructed the pinned IEEE 123-bus case as an adjacency graph of enabled OpenDSS lines and transformers, including regulator transformer elements. The resulting snapshot contains 126 line elements and eight transformer elements. The source bus, extracted from the first voltage-source terminal, is 150. Unlike the earlier line-only graph, this expanded element graph contains a path to each selected fault bus. Its shortest element paths from bus 150 to bus 60 and bus 83 contain 12 and 23 edges, respectively.
+
+\begin{table}[H]\centering
+\caption{Topology-derived hypothetical upstream protection boundaries. These are not verified installed relays, protection zones, or CT locations.}
+\label{tab:topology-boundaries}
+\begin{tabular}{lrrll}\toprule
+Fault bus & Path edges & Source bus & Candidate primary & Candidate backup\\\midrule
+60 & 12 & 150 & \texttt{Line.l58} & \texttt{Line.l55}\\
+83 & 23 & 150 & \texttt{Line.l84} & \texttt{Line.l82}\\\bottomrule
+\end{tabular}
+\end{table}
+The paths are element-adjacency candidates rather than verified energized, phase-continuous protection routes. In particular, shortest-path traversal does not by itself establish switch openness, directional current flow, actual protective device installation, or transformer winding phase correspondence.
+
+To move beyond fault-element current alone, we extracted conductor-resolved magnitudes from both terminals of each candidate upstream line during nine converged single-phase fault snapshot solves (three buses and three resistances). At bus 60, phase-1 fault resistance 0.1\,\(\Omega\), the selected candidate primary line \texttt{l58} has a terminal-1 conductor-1 current of 3366.82469\,A, while candidate backup line \texttt{l55} has a terminal-1 conductor-1 current of 3366.82432\,A. These are simulated \emph{line terminal currents}; conductor-to-phase identity and CT correspondence are not independently verified. The computed per-unit bus voltage magnitudes for this same fault case are 0.13719, 1.23553 and 1.13591, respectively, and should not be interpreted as validated operating voltage limits during real fault transients.
+
+The implementation explicitly represents independent primary and backup current-derating intervals, a common-derating subset, and breaker-delay intervals as hypothetical sensitivity assumptions. No data establish calibrated uncertainty distributions, actual relay pickup settings, reset characteristics or breaker delays. Accordingly, neither the candidate relay mappings nor the associated current magnitudes establish primary/backup selectivity or the joint restoration safety certificate. The evidence establishes reproducible feeder model topology and current extraction only.
