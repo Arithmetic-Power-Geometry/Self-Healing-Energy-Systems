@@ -25,3 +25,10 @@ Date: 2026-10-23. **Staging audit only; no manuscript changes.**
 - Independently cross-check all remaining incomplete author expansions.
 - Run BibTeX and both author/anonymous LaTeX builds against a working copy; do not overwrite original 63-reference manuscript until the reference gate passes.
 - Then complete narrative flow, claim-to-evidence, and clean CI audits in the order in `FM/README.md`.
+
+## Follow-up publisher checks (2026-10-23)
+- `CSEEFRT2026`: direct indexed IEEE Xplore record https://xplorestaging.ieee.org/document/11338153/ still displays an **empty Authors section**. The DOI, title, early-access date and 1–12 pages are corroborated, but the authors **remain unverified**. No fabricated author field was inserted.
+- `Luo2025ParallelGFMStability`: IEEE https://ieeexplore.ieee.org/document/10892023/ independently confirms TSTE **16(3), 2015–2028 (2025)** and DOI; the public indexing list https://eurekamag.com/research/100/113/100113207.php identifies nine surnames and initials, but does not justify expanding the last five names.
+- `Le2026FaultAnalysis`: https://eurekamag.com/research/111/550/111550455.php supports the three author initials and DOI, not expanded given names or volume/issue/pages.
+- **Structural parser correction:** the initial exploratory scan matched only fields beginning at a new line and incorrectly reported missing `year`/`url` for compact entries. A second scan accepted comma-separated inline assignments and found **63/63 title, year, URL; 62/63 author; 60/63 DOI; balanced braces and 63 unique keys**. The corrected results supersede the exploratory false positives.
+- The repository's current staged BibTeX has **not yet been copied into an isolated local LaTeX build**. Do not claim a successful build based on the earlier PDFs, which used a different bibliography snapshot.
