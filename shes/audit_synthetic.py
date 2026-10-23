@@ -6,6 +6,7 @@ SCRIPTS={
  "interrupted":"gate3_interrupted_pickup_20000.py",
  "finite":"gate3_finite_backup_trip_20000.py",
  "scalar":"gate3_scalar_analytic_envelope_2592.py",
+ "rk4":"gate3_envelope_falsification_rk4.py",
  "inverse":"gate3_inverse_time_relay_20000.py",
  "pickup":"gate3_relay_uncertainty_10000.py",
 }
@@ -24,7 +25,8 @@ def original_checks(results):
  c=results["finite"]["counts"]
  assert (c["nominal_approved"],c["nominal_false_approvals"],
  c["robust_approved"],c["robust_false_approvals"])==(6634,3530,3233,0)
- assert results["scalar"]["total"]==2592
+ assert (results["scalar"]["total"],results["scalar"]["analytically_enclosed"])==(2592,402)
+ assert results["rk4"]=={"total":2592,"refined":402,"rk4_safe":486,"refined_unsafe":0,"conservative":84}
  return {"finite_contingency":{"both":c["nominal_approved"]-c["nominal_false_approvals"],
   "nominal_only":c["nominal_false_approvals"],
   "robust_only":c["robust_approved"]-(c["nominal_approved"]-c["nominal_false_approvals"]),
