@@ -1,0 +1,18 @@
+\subsection{Reproducible IEEE 123-bus static feeder baseline}
+\label{sec:ieee123-static-verified}
+We executed a pinned IEEE 123-bus OpenDSS feeder through DSS-Python 0.15.7 on Ubuntu 24.04. The upstream feeder source was checked out at commit \texttt{5005c668a72d20775f4c2d060feebb2866ba1d38}. A case-sensitive Linux filename mismatch was corrected by copying \texttt{IEEELineCodes.DSS} to the referenced spelling \texttt{IEEELinecodes.DSS}; the electrical content was unchanged. The script compiled the feeder, solved both snapshot configurations, wrote a source-hash-provenance JSON artifact, and passed an independent fail-closed JSON validator. The successful GitHub Actions execution is run \texttt{39954993392} (23 October 2026).
+
+\begin{table}[H]
+\centering
+\caption{Independently validated static IEEE 123-bus OpenDSS snapshot outputs. Node counts are voltage nodes, not a claim of 278 buses.}
+\label{tab:ieee123-static-verified}
+\begin{tabular}{lrrrr}
+\toprule
+Configuration & Voltage nodes & Iterations & Minimum voltage (p.u.) & Maximum voltage (p.u.)\\
+\midrule
+Controls off & 278 & 3 & 0.926538 & 0.999994\\
+Static controls & 278 & 19 & 0.979211 & 1.049961\\
+\bottomrule
+\end{tabular}
+\end{table}
+Both snapshot cases converged under the specified solver. Their reported feeder powers were respectively $(-3482.685,-1358.069)$ and $(-3615.242,-1311.515)$ in $(\mathrm{kW},\mathrm{kvar})$ using the simulator's sign convention. These observations establish a reproducible \emph{static load-flow baseline only}. They do not validate inverter-forming frequency dynamics, fault-current contributions, primary/backup relay settings, restoration switching sequences, or electromagnetic transients. Accordingly, they are not treated as evidence that the proposed joint restoration safety certificate has been verified on this feeder.
