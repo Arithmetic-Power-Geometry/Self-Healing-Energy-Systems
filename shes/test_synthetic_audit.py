@@ -4,7 +4,7 @@ from audit_synthetic import comparative, execute, original_checks
 
 class SyntheticAuditTests(unittest.TestCase):
  def test_source_count_reproduction(self):
-  names=("independent","interrupted","finite","scalar")
+  names=("independent","interrupted","finite","scalar","rk4")
   original_checks({n:execute(n) for n in names})
  def test_contingency_arithmetic(self):
   c=original_checks({n:execute(n) for n in ("independent","interrupted","finite","scalar")})["finite_contingency"]
