@@ -1,0 +1,23 @@
+\section{Time-domain relay integration and reset semantics}
+\label{sec:relay-integration}
+A constant-current inverse-time operating time does not generally determine operation under time-varying inverter fault currents. To make the assumed relay abstraction explicit, define normalized progress \(x_r(t)\in[0,1]\) prior to assertion for relay \(r\), with initial condition \(0\le x_r(0)<1\). For a stipulated inverse-time curve
+\[
+T_r(I)=\frac{0.14\,{\rm s}\,\mathrm{TDS}_r}{(I/I_{{\rm pk},r})^{0.02}-1}\quad (I>I_{{\rm pk},r}),
+\]
+let \(\dot x_r(t)=1/T_r(I_r(t))\) while \(I_r(t)>I_{{\rm pk},r}\), and assert when \(x_r\) first reaches \(1\). The constant \(0.14\,{\rm s}\) and dimensionless TDS preserve the stated units. At or below strict pickup, specify \emph{one} of three idealized alternatives: full reset \(x_r\leftarrow0\), hold \(\dot x_r=0\), or linear partial reset \(\dot x_r=-\rho_r\) until zero, where \(\rho_r\) has units \({\rm s}^{-1}\). These are defined computational abstractions, not universal manufacturer or IEEE relay characteristics.
+
+For piecewise-constant current, exact within-segment integration advances \(x_r\) by \(\Delta t/T_r(I)\). If the remaining progress is \(1-x_r\), assertion occurs within a segment of duration \(\Delta t\) precisely when \((1-x_r)T_r(I)\le\Delta t\), at time \(t_{\rm start}+(1-x_r)T_r(I)\). The reset model and initial progress must be specified before computing any assertion time. A definite-time relay instead uses \(\dot x_r=1/T_{\rm req}\) above pickup with the same selected reset rule.
+
+\begin{proposition}[Constant-current consistency]
+Under uninterrupted constant current \(I>I_{\rm pk}\), zero initial progress and the stated inverse-time integrator, the assertion time equals \(T(I)\). For a piecewise-constant trace the segment algorithm computes the first assertion time exactly under the stipulated integrator and reset semantics.
+\end{proposition}
+\begin{proof}
+On each above-pickup segment, progress is affine with slope \(1/T(I)\). The first crossing of level one therefore occurs at the stated linear interpolation time. Below pickup, the specified reset or hold update gives the exact state at the next segment boundary. Induction over the finite partition establishes the claim.
+\end{proof}
+\paragraph{Breaker-aware coordination.}
+For sustained-fault counterfactual assertion times \(t_p,t_b\), primary and backup breaker delays \(d_p,d_b\ge0\), deadlines \(D_p,D_b\), and required selectivity \(\Delta>0\), require
+\[
+t_p+d_p\le D_p,\qquad t_b+d_b\le D_b,\qquad
+t_b-(t_p+d_p)\ge\Delta.
+\]
+The last inequality compares \emph{backup assertion} against \emph{primary breaker opening}. A primary clearing failure must be treated as a separate fault scenario, and the backup deadline is counterfactual under continued fault current. In real protection systems, relay memory, pickup hysteresis, filtering, directional logic, communications and breaker failure schemes can change these times. The present calculations make no claim about those omitted mechanisms.
