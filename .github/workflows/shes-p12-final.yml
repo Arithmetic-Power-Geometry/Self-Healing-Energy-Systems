@@ -1,0 +1,26 @@
+name: SHES P12 final scope audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/audit_final_p12.py"
+      - ".github/workflows/shes-p12-final.yml"
+permissions:
+  contents: read
+jobs:
+  final:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Reproduce final scientific scope audit
+        run: python -m shes.audit_final_p12 | tee shes/p12_scope_audit.json
+      - name: Archive scope audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p12-scope-audit
+          path: shes/p12_scope_audit.json
+          if-no-files-found: error
