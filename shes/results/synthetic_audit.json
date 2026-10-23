@@ -135,6 +135,13 @@
       "robust_approved": 2155,
       "robust_missed_trip": 0
     },
+    "rk4": {
+      "conservative": 84,
+      "refined": 402,
+      "refined_unsafe": 0,
+      "rk4_safe": 486,
+      "total": 2592
+    },
     "scalar": {
       "analytically_enclosed": 402,
       "by_tau": {
