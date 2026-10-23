@@ -1,0 +1,487 @@
+{
+  "cases": [
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 240163.19576229007,
+      "fault_resistance_ohm": 0.01,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 24017.51323733001,
+      "fault_resistance_ohm": 0.1,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 2401.752561675008,
+      "fault_resistance_ohm": 1.0,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 240164.19738421025,
+      "fault_resistance_ohm": 0.01,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 24017.611782323136,
+      "fault_resistance_ohm": 0.1,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 2401.7623996681527,
+      "fault_resistance_ohm": 1.0,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 240163.9280163693,
+      "fault_resistance_ohm": 0.01,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 24017.585719406838,
+      "fault_resistance_ohm": 0.1,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 2401.7598021356644,
+      "fault_resistance_ohm": 1.0,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3538.407713303367,
+      "fault_resistance_ohm": 0.01,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3294.884658853762,
+      "fault_resistance_ohm": 0.1,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 1607.420958446832,
+      "fault_resistance_ohm": 1.0,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3648.522593187211,
+      "fault_resistance_ohm": 0.01,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3398.240942476184,
+      "fault_resistance_ohm": 0.1,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 1663.282998062074,
+      "fault_resistance_ohm": 1.0,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3609.258015163526,
+      "fault_resistance_ohm": 0.01,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3358.929912352152,
+      "fault_resistance_ohm": 0.1,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 1636.434396068868,
+      "fault_resistance_ohm": 1.0,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1878.6629411565325,
+      "fault_resistance_ohm": 0.01,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1812.26499913722,
+      "fault_resistance_ohm": 0.1,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1206.9838652226485,
+      "fault_resistance_ohm": 1.0,
+      "phase": 1,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1942.446886908638,
+      "fault_resistance_ohm": 0.01,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1873.751650278697,
+      "fault_resistance_ohm": 0.1,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1250.433113215317,
+      "fault_resistance_ohm": 1.0,
+      "phase": 2,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1926.601334935754,
+      "fault_resistance_ohm": 0.01,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1856.6571548432505,
+      "fault_resistance_ohm": 0.1,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1228.5966113607976,
+      "fault_resistance_ohm": 1.0,
+      "phase": 3,
+      "switch_state": "as_published"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 240163.1949779715,
+      "fault_resistance_ohm": 0.01,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 24017.513159036167,
+      "fault_resistance_ohm": 0.1,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 2401.7525538430136,
+      "fault_resistance_ohm": 1.0,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 240164.2417173114,
+      "fault_resistance_ohm": 0.01,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 24017.61614107324,
+      "fault_resistance_ohm": 0.1,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 2401.762834795798,
+      "fault_resistance_ohm": 1.0,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 240163.92790230399,
+      "fault_resistance_ohm": 0.01,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 24017.585708890587,
+      "fault_resistance_ohm": 0.1,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "150",
+      "converged": true,
+      "fault_current_a": 2401.7598010929387,
+      "fault_resistance_ohm": 1.0,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3538.4859645403358,
+      "fault_resistance_ohm": 0.01,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3294.960913026571,
+      "fault_resistance_ohm": 0.1,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 1607.467464160774,
+      "fault_resistance_ohm": 1.0,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3649.4387369189753,
+      "fault_resistance_ohm": 0.01,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3399.1140849141575,
+      "fault_resistance_ohm": 0.1,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 1663.7494147072896,
+      "fault_resistance_ohm": 1.0,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3608.8423314311103,
+      "fault_resistance_ohm": 0.01,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 3358.5370777200965,
+      "fault_resistance_ohm": 0.1,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "60",
+      "converged": true,
+      "fault_current_a": 1636.2224181972776,
+      "fault_resistance_ohm": 1.0,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1878.7049669971354,
+      "fault_resistance_ohm": 0.01,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1812.3060126152639,
+      "fault_resistance_ohm": 0.1,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1207.0181085226345,
+      "fault_resistance_ohm": 1.0,
+      "phase": 1,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1942.9786983389808,
+      "fault_resistance_ohm": 0.01,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1874.2677225354696,
+      "fault_resistance_ohm": 0.1,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1250.7837882166345,
+      "fault_resistance_ohm": 1.0,
+      "phase": 2,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1926.3737019137839,
+      "fault_resistance_ohm": 0.01,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1856.437349474784,
+      "fault_resistance_ohm": 0.1,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    },
+    {
+      "bus": "83",
+      "converged": true,
+      "fault_current_a": 1228.433568482393,
+      "fault_resistance_ohm": 1.0,
+      "phase": 3,
+      "switch_state": "line_disabled"
+    }
+  ],
+  "dss_python_expected": "0.15.7",
+  "emt_validated": false,
+  "fault_current_validated": true,
+  "fault_locations": [
+    {
+      "bus": "150",
+      "phases": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "bus": "60",
+      "phases": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "bus": "83",
+      "phases": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "feeder_hashes": {
+    "IEEE123Loads.DSS": "fd28f52836205506a1980b52c5a7e12ca585aa626c52a6249502c1c3b2fc2255",
+    "IEEE123Master.dss": "21bfab1a3c956d347dc491436ae839281bf7db4ececc405e10ddeb04d3ab00ec",
+    "IEEE123Regulators.DSS": "cd6ad77980dc018631ce39faab528afce40b0b9a50a6bc1c9ac8049ffb8207d7",
+    "IEEELinecodes.DSS": "4bc8e3a0b24ad7b1cb4321f1c3b6c8458b646dd3a83b3cd11cccc02444624cb2"
+  },
+  "frequency_dynamics_validated": false,
+  "limitations": "Single-phase-to-ground Fault element probes in snapshot solve; not dynamic inverter or relay operation.",
+  "protection_validated": false,
+  "relay_coordination_validated": false,
+  "status": "PASS_FAULT_PROBE_ONLY",
+  "switch_sensitivity": {
+    "bus1": "1",
+    "bus2": "2",
+    "line": "l1",
+    "operationally_validated": false,
+    "states": [
+      "as_published",
+      "line_disabled"
+    ]
+  },
+  "upstream_commit": "5005c668a72d20775f4c2d060feebb2866ba1d38"
+}
