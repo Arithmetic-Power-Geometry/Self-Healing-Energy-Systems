@@ -1,0 +1,1037 @@
+{
+  "candidate_paths": {
+    "150": {
+      "candidate_backup_element": null,
+      "candidate_primary_element": null,
+      "installed_relay_verified": false,
+      "path": [],
+      "protection_zone_validated": false,
+      "reachable_in_element_graph": true
+    },
+    "60": {
+      "candidate_backup_element": "Line.l55",
+      "candidate_primary_element": "Line.l58",
+      "installed_relay_verified": false,
+      "path": [
+        {
+          "element": "Transformer.reg1a",
+          "from": "150",
+          "kind": "transformer",
+          "phases": 3,
+          "to": "150r"
+        },
+        {
+          "element": "Line.sw1",
+          "from": "150r",
+          "kind": "line",
+          "phases": 3,
+          "to": "149"
+        },
+        {
+          "element": "Line.l115",
+          "from": "149",
+          "kind": "line",
+          "phases": 3,
+          "to": "1"
+        },
+        {
+          "element": "Line.l3",
+          "from": "1",
+          "kind": "line",
+          "phases": 3,
+          "to": "7"
+        },
+        {
+          "element": "Line.l7",
+          "from": "7",
+          "kind": "line",
+          "phases": 3,
+          "to": "8"
+        },
+        {
+          "element": "Line.l10",
+          "from": "8",
+          "kind": "line",
+          "phases": 3,
+          "to": "13"
+        },
+        {
+          "element": "Line.sw2",
+          "from": "13",
+          "kind": "line",
+          "phases": 3,
+          "to": "152"
+        },
+        {
+          "element": "Line.l116",
+          "from": "152",
+          "kind": "line",
+          "phases": 3,
+          "to": "52"
+        },
+        {
+          "element": "Line.l52",
+          "from": "52",
+          "kind": "line",
+          "phases": 3,
+          "to": "53"
+        },
+        {
+          "element": "Line.l53",
+          "from": "53",
+          "kind": "line",
+          "phases": 3,
+          "to": "54"
+        },
+        {
+          "element": "Line.l55",
+          "from": "54",
+          "kind": "line",
+          "phases": 3,
+          "to": "57"
+        },
+        {
+          "element": "Line.l58",
+          "from": "57",
+          "kind": "line",
+          "phases": 3,
+          "to": "60"
+        }
+      ],
+      "protection_zone_validated": false,
+      "reachable_in_element_graph": true
+    },
+    "83": {
+      "candidate_backup_element": "Line.l82",
+      "candidate_primary_element": "Line.l84",
+      "installed_relay_verified": false,
+      "path": [
+        {
+          "element": "Transformer.reg1a",
+          "from": "150",
+          "kind": "transformer",
+          "phases": 3,
+          "to": "150r"
+        },
+        {
+          "element": "Line.sw1",
+          "from": "150r",
+          "kind": "line",
+          "phases": 3,
+          "to": "149"
+        },
+        {
+          "element": "Line.l115",
+          "from": "149",
+          "kind": "line",
+          "phases": 3,
+          "to": "1"
+        },
+        {
+          "element": "Line.l3",
+          "from": "1",
+          "kind": "line",
+          "phases": 3,
+          "to": "7"
+        },
+        {
+          "element": "Line.l7",
+          "from": "7",
+          "kind": "line",
+          "phases": 3,
+          "to": "8"
+        },
+        {
+          "element": "Line.l10",
+          "from": "8",
+          "kind": "line",
+          "phases": 3,
+          "to": "13"
+        },
+        {
+          "element": "Line.sw2",
+          "from": "13",
+          "kind": "line",
+          "phases": 3,
+          "to": "152"
+        },
+        {
+          "element": "Line.l116",
+          "from": "152",
+          "kind": "line",
+          "phases": 3,
+          "to": "52"
+        },
+        {
+          "element": "Line.l52",
+          "from": "52",
+          "kind": "line",
+          "phases": 3,
+          "to": "53"
+        },
+        {
+          "element": "Line.l53",
+          "from": "53",
+          "kind": "line",
+          "phases": 3,
+          "to": "54"
+        },
+        {
+          "element": "Line.l55",
+          "from": "54",
+          "kind": "line",
+          "phases": 3,
+          "to": "57"
+        },
+        {
+          "element": "Line.l58",
+          "from": "57",
+          "kind": "line",
+          "phases": 3,
+          "to": "60"
+        },
+        {
+          "element": "Line.sw4",
+          "from": "60",
+          "kind": "line",
+          "phases": 3,
+          "to": "160"
+        },
+        {
+          "element": "Transformer.reg4a",
+          "from": "160",
+          "kind": "transformer",
+          "phases": 1,
+          "to": "160r"
+        },
+        {
+          "element": "Line.l117",
+          "from": "160r",
+          "kind": "line",
+          "phases": 3,
+          "to": "67"
+        },
+        {
+          "element": "Line.l67",
+          "from": "67",
+          "kind": "line",
+          "phases": 3,
+          "to": "72"
+        },
+        {
+          "element": "Line.l73",
+          "from": "72",
+          "kind": "line",
+          "phases": 3,
+          "to": "76"
+        },
+        {
+          "element": "Line.l76",
+          "from": "76",
+          "kind": "line",
+          "phases": 3,
+          "to": "77"
+        },
+        {
+          "element": "Line.l78",
+          "from": "77",
+          "kind": "line",
+          "phases": 3,
+          "to": "78"
+        },
+        {
+          "element": "Line.l80",
+          "from": "78",
+          "kind": "line",
+          "phases": 3,
+          "to": "80"
+        },
+        {
+          "element": "Line.l81",
+          "from": "80",
+          "kind": "line",
+          "phases": 3,
+          "to": "81"
+        },
+        {
+          "element": "Line.l82",
+          "from": "81",
+          "kind": "line",
+          "phases": 3,
+          "to": "82"
+        },
+        {
+          "element": "Line.l84",
+          "from": "82",
+          "kind": "line",
+          "phases": 3,
+          "to": "83"
+        }
+      ],
+      "protection_zone_validated": false,
+      "reachable_in_element_graph": true
+    }
+  },
+  "element_count": 134,
+  "element_kinds": {
+    "line": 126,
+    "transformer": 8
+  },
+  "hypothetical_uncertainty": {
+    "backup_a": [
+      56.0,
+      80.0
+    ],
+    "breaker_delay_s": [
+      0,
+      0.04
+    ],
+    "calibrated_to_equipment": false,
+    "common_derating_subset": true,
+    "independent_box": true,
+    "pickup_persistence_validated": false,
+    "primary_a": [
+      70.0,
+      100.0
+    ]
+  },
+  "installed_protection_verified": false,
+  "inverter_fault_current_validated": false,
+  "notes": "Connectivity is element adjacency only; phases, switch openness, regulator behavior and energized connectivity require separate checks.",
+  "pin": "5005c668a72d20775f4c2d060feebb2866ba1d38",
+  "relay_coordination_validated": false,
+  "restoration_safe": false,
+  "results": [
+    {
+      "bus": "150",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.999939560500954,
+        0.9999938696144447,
+        0.9999927928164212
+      ],
+      "candidate_terminal_currents": {},
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 0.01
+    },
+    {
+      "bus": "150",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.9999892595796548,
+        0.999993876681207,
+        0.9999927961763782
+      ],
+      "candidate_terminal_currents": {},
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 0.1
+    },
+    {
+      "bus": "150",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.9999897750071677,
+        0.9999938775478433,
+        0.999992796508244
+      ],
+      "candidate_terminal_currents": {},
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 1.0
+    },
+    {
+      "bus": "60",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.01473245658013231,
+        1.2273800922573512,
+        1.1796443471230345
+      ],
+      "candidate_terminal_currents": {
+        "backup": {
+          "currents": [
+            {
+              "bus": "54.1.2.3",
+              "conductor": 1,
+              "current_a": 3578.9252706448997,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "54.1.2.3",
+              "conductor": 2,
+              "current_a": 269.04086720693573,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "54.1.2.3",
+              "conductor": 3,
+              "current_a": 257.14664670754894,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 1,
+              "current_a": 3578.925668865069,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 2,
+              "current_a": 269.04121120031976,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 3,
+              "current_a": 257.14644264433707,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l55"
+        },
+        "primary": {
+          "currents": [
+            {
+              "bus": "57.1.2.3",
+              "conductor": 1,
+              "current_a": 3578.9256688650694,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 2,
+              "current_a": 250.7437458694196,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 3,
+              "current_a": 257.14644264433105,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 1,
+              "current_a": 3578.9262611523545,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 2,
+              "current_a": 250.74435793073297,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 3,
+              "current_a": 257.1460174542105,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l58"
+        }
+      },
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 0.01
+    },
+    {
+      "bus": "60",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.13718527966860486,
+        1.2355282609163067,
+        1.135914126119503
+      ],
+      "candidate_terminal_currents": {
+        "backup": {
+          "currents": [
+            {
+              "bus": "54.1.2.3",
+              "conductor": 1,
+              "current_a": 3366.8243247749147,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "54.1.2.3",
+              "conductor": 2,
+              "current_a": 268.33714827496095,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "54.1.2.3",
+              "conductor": 3,
+              "current_a": 250.1913967074738,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 1,
+              "current_a": 3366.8246897065255,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 2,
+              "current_a": 268.3374756235947,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 3,
+              "current_a": 250.19119934457257,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l55"
+        },
+        "primary": {
+          "currents": [
+            {
+              "bus": "57.1.2.3",
+              "conductor": 1,
+              "current_a": 3366.8246897065187,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 2,
+              "current_a": 249.8797506386807,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 3,
+              "current_a": 250.19119934455694,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 1,
+              "current_a": 3366.825226432069,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 2,
+              "current_a": 249.88033009179492,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 3,
+              "current_a": 250.1907883624135,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l58"
+        }
+      },
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 0.1
+    },
+    {
+      "bus": "60",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.6692631656685033,
+        1.1481222911677755,
+        0.9533058809089502
+      ],
+      "candidate_terminal_currents": {
+        "backup": {
+          "currents": [
+            {
+              "bus": "54.1.2.3",
+              "conductor": 1,
+              "current_a": 1816.4164051490386,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "54.1.2.3",
+              "conductor": 2,
+              "current_a": 246.30185255755922,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "54.1.2.3",
+              "conductor": 3,
+              "current_a": 259.45655359868147,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 1,
+              "current_a": 1816.416567313415,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 2,
+              "current_a": 246.3021213841341,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 3,
+              "current_a": 259.4565225563601,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l55"
+        },
+        "primary": {
+          "currents": [
+            {
+              "bus": "57.1.2.3",
+              "conductor": 1,
+              "current_a": 1816.4165673134137,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 2,
+              "current_a": 228.52474049180617,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "57.1.2.3",
+              "conductor": 3,
+              "current_a": 259.4565225563551,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 1,
+              "current_a": 1816.4167840555306,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 2,
+              "current_a": 228.5252188310634,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "60.1.2.3",
+              "conductor": 3,
+              "current_a": 259.45645328280824,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l58"
+        }
+      },
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 1.0
+    },
+    {
+      "bus": "83",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.007821970347067055,
+        1.2124190262336627,
+        1.2041255199517753
+      ],
+      "candidate_terminal_currents": {
+        "backup": {
+          "currents": [
+            {
+              "bus": "81.1.2.3",
+              "conductor": 1,
+              "current_a": 1879.4326267621432,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "81.1.2.3",
+              "conductor": 2,
+              "current_a": 100.96163421228628,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "81.1.2.3",
+              "conductor": 3,
+              "current_a": 96.14950578397121,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 1,
+              "current_a": 1879.4328335927623,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 2,
+              "current_a": 100.96089952308942,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 3,
+              "current_a": 96.1486795200772,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l82"
+        },
+        "primary": {
+          "currents": [
+            {
+              "bus": "82.1.2.3",
+              "conductor": 1,
+              "current_a": 1878.662868170513,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 2,
+              "current_a": 100.96089952309667,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 3,
+              "current_a": 96.14867952008036,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 1,
+              "current_a": 1878.6630540705944,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 2,
+              "current_a": 100.960161225957,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 3,
+              "current_a": 96.14785194031528,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l84"
+        }
+      },
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 0.01
+    },
+    {
+      "bus": "83",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.07545516959818346,
+        1.2191258719232154,
+        1.1776675860336367
+      ],
+      "candidate_terminal_currents": {
+        "backup": {
+          "currents": [
+            {
+              "bus": "81.1.2.3",
+              "conductor": 1,
+              "current_a": 1814.149286530621,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "81.1.2.3",
+              "conductor": 2,
+              "current_a": 101.52013476932254,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "81.1.2.3",
+              "conductor": 3,
+              "current_a": 94.03687203737975,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 1,
+              "current_a": 1814.149477909043,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 2,
+              "current_a": 101.51939494041912,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 3,
+              "current_a": 94.03604702889051,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l82"
+        },
+        "primary": {
+          "currents": [
+            {
+              "bus": "82.1.2.3",
+              "conductor": 1,
+              "current_a": 1812.2757203255135,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 2,
+              "current_a": 101.51939494040596,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 3,
+              "current_a": 94.03604702889338,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 1,
+              "current_a": 1812.2758914368717,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 2,
+              "current_a": 101.51865149003125,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 3,
+              "current_a": 94.03522088163662,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l84"
+        }
+      },
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 0.1
+    },
+    {
+      "bus": "83",
+      "bus_nodes": [
+        1,
+        2,
+        3
+      ],
+      "bus_voltage_pu": [
+        0.5025378313657436,
+        1.1937425951139433,
+        1.0016903892198963
+      ],
+      "candidate_terminal_currents": {
+        "backup": {
+          "currents": [
+            {
+              "bus": "81.1.2.3",
+              "conductor": 1,
+              "current_a": 1216.4182477930567,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "81.1.2.3",
+              "conductor": 2,
+              "current_a": 99.40644874138003,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "81.1.2.3",
+              "conductor": 3,
+              "current_a": 79.69254528244333,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 1,
+              "current_a": 1216.4183099621305,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 2,
+              "current_a": 99.40569768823137,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 3,
+              "current_a": 79.69172384000998,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l82"
+        },
+        "primary": {
+          "currents": [
+            {
+              "bus": "82.1.2.3",
+              "conductor": 1,
+              "current_a": 1207.7090391249415,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 2,
+              "current_a": 99.4056976882309,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "82.1.2.3",
+              "conductor": 3,
+              "current_a": 79.69172384001838,
+              "phase_identity_verified": false,
+              "terminal": 1
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 1,
+              "current_a": 1207.709085924895,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 2,
+              "current_a": 99.40494355270522,
+              "phase_identity_verified": false,
+              "terminal": 2
+            },
+            {
+              "bus": "83.1.2.3",
+              "conductor": 3,
+              "current_a": 79.69090223848079,
+              "phase_identity_verified": false,
+              "terminal": 2
+            }
+          ],
+          "element": "Line.l84"
+        }
+      },
+      "converged": true,
+      "fault_phase": 1,
+      "fault_resistance_ohm": 1.0
+    }
+  ],
+  "sha256": {
+    "IEEE123Loads.DSS": "fd28f52836205506a1980b52c5a7e12ca585aa626c52a6249502c1c3b2fc2255",
+    "IEEE123Master.dss": "21bfab1a3c956d347dc491436ae839281bf7db4ececc405e10ddeb04d3ab00ec",
+    "IEEE123Regulators.DSS": "cd6ad77980dc018631ce39faab528afce40b0b9a50a6bc1c9ac8049ffb8207d7",
+    "IEEELinecodes.DSS": "4bc8e3a0b24ad7b1cb4321f1c3b6c8458b646dd3a83b3cd11cccc02444624cb2"
+  },
+  "source_bus": "150",
+  "status": "PASS_TOPOLOGY_AND_TERMINAL_PROBES_ONLY"
+}
