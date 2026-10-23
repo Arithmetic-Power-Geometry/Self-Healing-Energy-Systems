@@ -1,0 +1,31 @@
+name: SHES synthetic reproducibility audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/audit_synthetic.py"
+      - "shes/test_synthetic_audit.py"
+      - ".github/workflows/shes-synthetic-audit.yml"
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile audit
+        run: python -m py_compile shes/audit_synthetic.py shes/test_synthetic_audit.py
+      - name: Test independent corner oracle and contingency
+        run: python -m unittest discover -s shes -p test_synthetic_audit.py -v
+      - name: Reproduce source experiments and sensitivity
+        run: python shes/audit_synthetic.py > shes_synthetic_results.json
+      - name: Upload reproducible result JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-synthetic-results
+          path: shes_synthetic_results.json
+          if-no-files-found: error
