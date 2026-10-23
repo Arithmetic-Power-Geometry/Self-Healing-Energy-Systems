@@ -21,7 +21,7 @@ def line_edges(records):
   if not an or len(an)!=len(bn) or len(set(an))!=len(an) or len(set(bn))!=len(bn):continue
   for x,y in zip(an,bn):
    if x not in (1,2,3) or y not in (1,2,3):continue
-   if (1,x) in e["open_conductors"] or (2,y) in e["open_conductors"]:continue
+   if [1,x] in e["open_conductors"] or [2,y] in e["open_conductors"]:continue
    graph[(a,x)].append(((b,y),e["name"]))
    graph[(b,y)].append(((a,x),e["name"]))
  return graph
