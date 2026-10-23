@@ -3,6 +3,7 @@
 import argparse, hashlib, json, math, pathlib, re
 from collections import deque
 from evidence.run_ieee123_baseline import deps
+from shes.candidate_protection_paths import candidate_paths
 
 PIN="5005c668a72d20775f4c2d060feebb2866ba1d38"
 def cmd(d,text):
@@ -82,7 +83,7 @@ def run(root,out):
   "feeder_hashes":hashes,"switch_sensitivity":{"line":selected["name"],
    "bus1":selected["from"],"bus2":selected["to"],"states":["as_published","line_disabled"],
    "operationally_validated":False},
-  "fault_locations":locations,"cases":cases,"fault_current_validated":True,
+  "fault_locations":locations,"candidate_relay_boundaries":candidate_paths(lines,"150",["60","83"]),"cases":cases,"fault_current_validated":True,
   "relay_coordination_validated":False,"protection_validated":False,
   "frequency_dynamics_validated":False,"emt_validated":False,
   "limitations":"Single-phase-to-ground Fault element probes in snapshot solve; not dynamic inverter or relay operation."}
