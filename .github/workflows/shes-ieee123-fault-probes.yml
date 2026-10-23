@@ -8,7 +8,7 @@ on:
       - "shes/test_fault_probes.py"
       - ".github/workflows/shes-ieee123-fault-probes.yml"
 permissions:
-  contents: read
+  contents: write
 jobs:
   probes:
     runs-on: ubuntu-24.04
@@ -40,6 +40,17 @@ jobs:
           python -m shes.run_ieee123_fault_probes --feeder /tmp/opendss/Distrib/IEEETestCases/123Bus --output shes/ieee123_fault_probe_result.json
       - name: Independently validate results
         run: python shes/validate_fault_probes.py shes/ieee123_fault_probe_result.json
+      - name: Archive validated JSON under shes
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shes/ieee123_fault_probe_result.json
+          if ! git diff --cached --quiet; then
+            git commit -m "SHES P7: archive validated feeder fault probes"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
       - name: Preserve JSON and diagnostics
         if: always()
         uses: actions/upload-artifact@v4
