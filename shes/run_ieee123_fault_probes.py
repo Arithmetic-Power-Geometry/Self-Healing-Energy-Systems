@@ -14,12 +14,12 @@ def source_hashes(root):
 def buses_and_lines(d):
  names={str(x).lower():str(x) for x in d.ActiveCircuit.AllBusNames}
  lines=[]
- if d.Lines.First:
+ if d.ActiveCircuit.Lines.First:
   while True:
-   name=str(d.Lines.Name); b1=str(d.Lines.Bus1).split(".")[0].lower()
-   b2=str(d.Lines.Bus2).split(".")[0].lower()
+   name=str(d.ActiveCircuit.Lines.Name); b1=str(d.ActiveCircuit.Lines.Bus1).split(".")[0].lower()
+   b2=str(d.ActiveCircuit.Lines.Bus2).split(".")[0].lower()
    lines.append({"name":name,"from":b1,"to":b2})
-   if not d.Lines.Next: break
+   if not d.ActiveCircuit.Lines.Next: break
  return names,lines
 def choose_locations(d,names):
  # Three deliberately named, auditable fault buses. Fail rather than silently substitute.
