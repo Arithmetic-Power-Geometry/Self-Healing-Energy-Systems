@@ -1,0 +1,15 @@
+\section{Phase-indexed feeder topology: a fail-closed audit}
+\label{sec:p14-phase}
+The IEEE 123-bus study uses the pinned upstream OpenDSS revision \texttt{5005c668a72d20775f4c2d060feebb2866ba1d38} and \texttt{dss-python==0.15.7}. An element-adjacency path is not itself an energized, phase-continuous fault-current path. We therefore extract enabled line and transformer elements, terminal bus/node designations, conductor counts, and per-terminal conductor open states. A line contributes a phase-indexed graph edge only when its two terminal conductor lists have matching lengths and unique conductor identifiers, the corresponding terminal conductors are not marked open, and both conductor identifiers belong to phases 1--3. Terminal conductor positions, rather than equal bus-phase labels, determine the candidate mapping. These edges remain a topological approximation and do not validate the line's electrical state under every fault.
+
+Transformer and regulator windings are recorded but \emph{not} joined by an assumed phase transfer. Their electrical mapping requires winding connection, node mapping and regulator state information beyond simple element adjacency. Consequently, the conservative line-only graph may fail to reach a target that is physically energized; such a negative result is an evidence gap, not proof of de-energization. The previous element-level candidate paths to buses 60 and 83 used, respectively, terminal elements \texttt{Line.l58}/\texttt{Line.l55} and \texttt{Line.l84}/\texttt{Line.l82}; these remain \emph{candidate boundaries}, not installed primary/backup relays. No CT orientation, protection zone, relay inventory or physical restoration authorization follows from the path labels.
+
+\begin{proposition}[Adjacency does not imply phase continuity]
+A path in the undirected element-adjacency graph does not imply a phase-indexed conductor path, even if every element is enabled.
+\end{proposition}
+\begin{proof}
+Consider an enabled line from \texttt{s.1} to \texttt{x.1}, an enabled transformer with terminal labels \texttt{x.1} and \texttt{y.2} but no independently verified winding transfer, and an enabled line from \texttt{y.2} to \texttt{t.2}. The bus-level graph has the path \(s-x-y-t\). A phase-indexed line-only graph has no edge between \((x,1)\) and \((y,2)\), so no verified conductor path from \((s,1)\) to \((t,2)\) exists. Similarly, an open conductor of an otherwise enabled multiphase line can break a phase path without removing the element-level edge.
+\end{proof}
+
+\paragraph{Interpretation and next steps.}
+This is a deliberately fail-closed \emph{connectivity-evidence} audit. It does not infer electrical energization from a bus-voltage magnitude, nor a protective relay's CT polarity from a terminal current magnitude. The next stage must resolve transformer/regulator winding transfer, switch operating state, energized-source connectivity and fault-current direction before any topology-dependent coordination claim is elevated from a candidate to a verified model result.
