@@ -1,0 +1,21 @@
+\subsection{Phase-aware feeder-derived fault probes and switching sensitivity}
+\label{sec:feeder-fault-probes}
+We extended the pinned IEEE 123-bus static case to a deliberately limited fault-current experiment using DSS-Python 0.15.7 and the same upstream OpenDSS revision. Each run recompiles the published feeder to avoid state leakage, applies a one-phase \texttt{Fault} element at the specified bus and phase, solves a snapshot with controls disabled, and records the current magnitude at the fault element's first terminal. We tested buses 150, 60 and 83, all three available phase labels, and resistances \(R_f\in\{0.01,0.1,1.0\}\,\Omega\). Two circuit configurations were examined: the published line state and an experimental state in which the existing line \texttt{l1} is disabled. This produces 54 scenarios (three buses, three phases, three fault resistances, two configurations), all of which converged in the independently validated GitHub Actions run \texttt{39956030167}. The observed fault-element current magnitudes ranged from 1,206.98 A to 240,164.24 A across the tested configurations.
+
+\begin{table}[H]
+\centering
+\caption{Scope and reproducibility of the feeder-derived fault-current probe. These are OpenDSS model outputs, not relay-operating times.}
+\label{tab:feeder-fault-probes}
+\begin{tabular}{ll}\toprule
+Item & Verified experimental setting\\\midrule
+Feeder & IEEE 123-bus, pinned OpenDSS source revision\\
+Fault buses & 150, 60, 83\\
+Phases & 1, 2, 3 at each selected bus\\
+Fault resistance & 0.01, 0.1, 1.0 \(\Omega\)\\
+Switching configurations & Published; \texttt{Line.l1} disabled\\
+Scenarios & 54 converged snapshot fault-element solves\\
+Fault current range & 1,206.98--240,164.24 A\\
+Independent JSON checks & Source hashes, coverage, uniqueness, finite current, scope flags\\\bottomrule
+\end{tabular}
+\end{table}
+The unusually large upper-end fault current should not be interpreted as a measured device duty rating. The fault element, network source model, reference voltage and idealized short-circuit conditions determine the computed current. Disabling \texttt{Line.l1} is a sensitivity experiment, not an established permissible restoration switching action. In particular, we have not verified feeder-wide connectivity after the line outage, assigned or calibrated physical primary/backup relays, or simulated relay response to the fault-current trajectories. Thus the phase-aware results provide reproducible feeder-derived \emph{inputs} for subsequent protection studies, but do not yet validate the joint protection certificate, inverter-limited fault behavior, or restoration safety.
