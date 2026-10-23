@@ -1,0 +1,48 @@
+\section{Continuous uncertainty: exact rectangular certificate and correlated counterexample}
+\label{sec:p13-continuum}
+Let a relay's fixed, nonnegative, piecewise-constant current template be \(J(t)\) on a finite horizon \(H\), and let the uncertain current be \(I_\gamma(t)=\gamma J(t)\), with \(\gamma\ge0\). Fix a strict pickup \(I_{\rm pk}>0\), positive time multiplier, a fixed initial timer progress, and one of the stipulated full, hold, or linear-reset semantics. Write \(t_r(\gamma)\in[0,H]\cup\{\infty\}\) for its first assertion time.
+
+\begin{proposition}[Current-scale comparison for the stipulated timer]
+\label{prop:p13-monotone}
+If \(0\le\gamma_1\le\gamma_2\), then \(t_r(\gamma_2)\le t_r(\gamma_1)\). This holds for full reset, hold and linear reset with a fixed nonnegative reset rate, provided the current template, pickup, initial progress and reset semantics do not themselves vary with \(\gamma\).
+\end{proposition}
+\begin{proof}
+The inverse-time charging rate \(v(I)=1/T(I)\) is zero at and below strict pickup and is nondecreasing above pickup. At every segment, the larger-scaled current therefore has at least as large a charging rate. If both are below pickup, full reset maps both progress states to zero, hold preserves their order, and linear reset applies the order-preserving map \(x\mapsto\max(0,x-\rho\Delta t)\). If only the smaller current is below pickup, its reset/hold operation cannot increase its progress, whereas the larger current charges or holds. Induction over segment boundaries preserves the progress ordering until the first assertion; within a segment the charging rates preserve it. Hence the larger-scaled trace asserts no later. The proof concerns the specified normalized-progress model, not an arbitrary manufacturer relay.
+\end{proof}
+
+\begin{theorem}[Exact independent-rectangle coordination criterion]
+\label{thm:p13-rectangle}
+Suppose primary and backup relay assertion times are monotone as in Proposition~\ref{prop:p13-monotone}, with independently variable current scales
+\(\gamma_p\in[\underline\gamma_p,\overline\gamma_p]\) and
+\(\gamma_b\in[\underline\gamma_b,\overline\gamma_b]\), and independently variable nonnegative breaker delays \(d_p\in[\underline d_p,\overline d_p]\) and \(d_b\in[\underline d_b,\overline d_b]\). Assume every combination in this Cartesian product is admissible, the traces and initial timer states are fixed, and finite assertion of both relays is required. Define
+\(t_p^+=t_p(\underline\gamma_p)\),
+\(t_b^+=t_b(\underline\gamma_b)\), and
+\(t_b^-=t_b(\overline\gamma_b)\).
+Then, for all admissible uncertainties, primary clearing by \(D_p\), backup counterfactual clearing by \(D_b\), and the margin
+\(t_b-(t_p+d_p)\ge\Delta\)
+hold if and only if all three assertion times are finite and
+\[
+t_p^++\overline d_p\le D_p,\qquad
+t_b^++\overline d_b\le D_b,\qquad
+t_b^--t_p^+-\overline d_p\ge\Delta.
+\]
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:p13-monotone} makes \(t_p^+\) and \(t_b^+\) the respective largest assertion times and \(t_b^-\) the smallest backup assertion time. The first two inequalities are therefore sufficient and necessary for the clearing deadlines, because the corresponding upper breaker-delay endpoints are admissible. For coordination, the smallest possible \(t_b-t_p-d_p\) occurs at the jointly admissible choice \((\gamma_b,\gamma_p,d_p)=(\overline\gamma_b,\underline\gamma_p,\overline d_p)\). Thus the third inequality is also necessary and sufficient. If any required assertion is infinite, the corresponding finite clearing deadline fails. The backup clearing deadline uses \(\overline d_b\), while the coordination margin concerns backup \emph{assertion} and therefore does not include \(d_b\).
+\end{proof}
+
+\begin{proposition}[Failure of common-derating endpoint sufficiency]
+\label{prop:p13-counterexample}
+Under the same inverse-time charging law with exponent \(0.02\), checking only the two endpoints of a \emph{correlated} common-current scaling interval need not certify the coordination margin at its interior points, even with zero breaker delays and a positive margin.
+\end{proposition}
+\begin{proof}
+Let the primary normalized current template equal \(1\) on \([0,20]\), while the backup template equals \(0\) on \([0,1]\) and \(1\) on \([1,20]\). Both relays start with zero progress, and both use full reset. Choose primary pickup \(0.193\), backup pickup \(0.274\), and inverse-time constants \(k_p=0.020\), \(k_b=0.0046\), so that \(T_r(I)=k_r/((I/I_{{\rm pk},r})^{0.02}-1)\) above pickup. For the common scaling \(\gamma\in[0.28,1]\), both relay assertion times are finite, with
+\[
+t_p(\gamma)=\frac{0.020}{(\gamma/0.193)^{0.02}-1},\qquad
+t_b(\gamma)=1+\frac{0.0046}{(\gamma/0.274)^{0.02}-1}.
+\]
+The coordination differences \(t_b-t_p\) at \(\gamma=0.28,0.38,1\) are approximately \(8.938,\ 0.235,\ 0.577\) seconds, respectively. Thus both endpoints satisfy a margin of \(0.4\) seconds, whereas the interior point \(0.38\) violates it. Both clearing deadlines may be set to \(20\) seconds, so they do not explain the violation. This is an explicit model counterexample to correlated-endpoint sufficiency.
+\end{proof}
+
+\paragraph{Scope and physical interpretation.}
+The exact rectangular theorem can certify a \emph{larger} independent uncertainty box even when physical uncertainties are correlated, but such an outer approximation can reject safe correlated cases. Checking only the endpoints of a correlated diagonal is not equivalent. The theorem assumes a fixed current template scaled by one nonnegative scalar per relay; it does not cover waveform-shape changes, uncertain reset rates, nonrectangular device coupling, CT saturation, or electromagnetic-transient effects. For such cases, verified interval integration or adaptive subdivision with sound enclosures is required, or the result must be described as finite-scenario testing. The backup is evaluated as a sustained-fault counterfactual, not as a relay expected to trip after successful primary isolation.
