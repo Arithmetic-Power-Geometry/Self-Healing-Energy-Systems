@@ -1,0 +1,43 @@
+name: SHES complete manuscript build (fail closed)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  manuscript:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all complete-manuscript sources are committed
+        run: |
+          set -eu
+          cd shes
+          for f in main.tex references.bib joint_certificate.tex relay_time_domain_section.tex synthetic_audit_section.tex ieee123_static_verified_section.tex ieee123_fault_probe_section.tex ieee123_topology_section.tex ieee123_p9_section.tex ieee123_p10_joint_section.tex p11_independent_audit_section.tex figures/pickup_dropout.pdf figures/relay_screen.pdf figures/relay_uncertainty.pdf figures/static_voltage.pdf; do
+            test -s "$f" || { echo "::error::Missing required manuscript source: shes/$f"; exit 1; }
+          done
+          grep -q '\\documentclass' main.tex || { echo "::error::shes/main.tex is not a complete manuscript"; exit 1; }
+          grep -q '\\bibliography{references}' main.tex || { echo "::error::bibliography declaration missing"; exit 1; }
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-science texlive-bibtex-extra
+      - name: Compile bibliography-resolved PDF
+        run: |
+          set -eu
+          cd shes
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex8 main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          ! grep -Eq '(Citation.*undefined|Reference.*undefined|There were undefined references|I couldn.t open database file)' main.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shes-complete-manuscript
+          path: |
+            shes/main.pdf
+            shes/main.log
+            shes/main.bbl
+          if-no-files-found: error
