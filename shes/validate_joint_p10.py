@@ -7,6 +7,12 @@ def validate(r):
   raise ValueError("unsupported physical certificate")
  if not r.get("physical_gate") or any(v is not False for v in r["physical_gate"].values()):
   raise ValueError("gate must fail closed")
+ if r.get("corner_completeness_proved") is not False:
+  raise ValueError("unproved continuum corner completeness")
+ if type(r.get("interior_samples_checked")) is not int or r["interior_samples_checked"]<0:
+  raise ValueError("interior audit missing")
+ if type(r.get("interior_corner_approval_violations")) is not int:
+  raise ValueError("interior violation count missing")
  for reset in ("full","hold","linear"):
   t=r["tables"].get(reset,{})
   for name in ("nominal","common","box"):
