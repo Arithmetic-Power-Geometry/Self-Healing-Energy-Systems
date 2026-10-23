@@ -1,0 +1,51 @@
+name: SHES P17 unified benchmark
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/unified_benchmark_p17.py"
+      - "shes/test_unified_benchmark_p17.py"
+      - ".github/workflows/shes-p17-benchmark.yml"
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Independent regression and theorem tests
+        run: python -m unittest shes.test_unified_benchmark_p17 shes.test_robust_continuum_p13 -v
+      - name: Reproduce unified benchmark
+        run: python -m shes.unified_benchmark_p17 --n 90 --output shes/p17_benchmark.json | tee shes/p17_summary.json
+      - name: Independently validate benchmark evidence
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("shes/p17_benchmark.json"))
+          assert d["seed"]==1717 and d["n"]==90
+          assert d["reset_counts"]=={"full":30,"hold":30,"linear":30}
+          assert d["physical_restoration_certificates"]==0
+          ref=d["rectangular_continuum_reference"]
+          for m,r in ref.items():
+              assert sum(r[k] for k in ("true_approvals","false_approvals","conservative_rejections","true_rejections"))==90
+              assert r["elapsed_s"]>=0
+          assert ref["rectangle"]["false_approvals"]==0
+          assert ref["rectangle"]["conservative_rejections"]==0
+          assert ref["time_domain_grid"]["false_approvals"]==0
+          assert ref["time_domain_grid"]["conservative_rejections"]==0
+          w=d["correlated_interior_counterexample"]
+          assert [s["passes_margin_0_4"] for s in w["samples"]]==[True,False,True]
+          print("P17 independent benchmark invariants PASS")
+          PY
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p17-unified-benchmark
+          path: |
+            shes/p17_benchmark.json
+            shes/p17_summary.json
+          if-no-files-found: error
