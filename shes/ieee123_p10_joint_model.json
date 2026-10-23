@@ -1,7 +1,11 @@
 {
   "assumptions": "Hypothetical scalar M,D, net-power intervals, pickups, time multipliers, delays and piecewise-constant current; conductor-1 terminal-1 feeder proxies.",
+  "corner_completeness_proved": false,
   "counterfactual_backup": "Sustained fault at backup; primary clearing is not simulated as interrupting the backup counterfactual.",
   "frequency_worst_pass": 1097,
+  "interior_corner_approval_violations": 0,
+  "interior_counterexamples": [],
+  "interior_samples_checked": 1458,
   "joint_model_approvals": 18,
   "nominal_false_approval_witnesses": [
     {
