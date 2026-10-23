@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this research, please cite the Zenodo publication."
+title: "Conditional Frequency and Protection Screens for Microgrid Restoration: Robust Bounds, Relay-Timer Counterexamples, and IEEE 123-Bus Model Evidence"
+type: article
+authors:
+  - family-names: Akhtar
+    given-names: Mohammad Amir Khusru
+    orcid: "https://orcid.org/0000-0002-3432-4199"
+version: "V1"
+date-released: 2026-10-23
+doi: 10.5281/zenodo.23600076
+url: "https://doi.org/10.5281/zenodo.23600076"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Akhtar
+      given-names: Mohammad Amir Khusru
+  title: "Conditional Frequency and Protection Screens for Microgrid Restoration: Robust Bounds, Relay-Timer Counterexamples, and IEEE 123-Bus Model Evidence"
+  year: 2026
+  doi: 10.5281/zenodo.23600076
+  url: "https://doi.org/10.5281/zenodo.23600076"

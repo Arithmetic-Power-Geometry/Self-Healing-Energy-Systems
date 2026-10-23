@@ -1,1 +1,0 @@
-Baseline source package is available locally as shes_revision_stage1.zip in this conversation. Initial proof/notation revision is not yet fully uploaded to GitHub. Files included: main.tex, references.bib, figures/, audit.json and citation_registry.tsv. Do not represent this as completed physical validation.
