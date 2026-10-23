@@ -1,0 +1,23 @@
+name: SHES relay time-domain tests
+on:
+  push:
+    paths:
+      - "shes/relay_time_domain.py"
+      - "shes/test_relay_time_domain.py"
+      - ".github/workflows/shes-relay-tests.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile and run deterministic tests
+        run: |
+          python -m py_compile shes/relay_time_domain.py shes/test_relay_time_domain.py
+          cd shes
+          python -m unittest -v test_relay_time_domain
