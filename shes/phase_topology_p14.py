@@ -73,6 +73,7 @@ def audit_records(records,source="150",targets=("60","83")):
 def run(root,output):
  from dss import DSS
  root=pathlib.Path(root).resolve()
+ output=pathlib.Path(output).resolve()
  d=DSS.NewContext();cmd(d,f'compile "{root/"IEEE123Master.dss"}"')
  records=read_records(d)
  source_elements=[n for n in d.ActiveCircuit.AllElementNames if n.lower().startswith("vsource.")]
