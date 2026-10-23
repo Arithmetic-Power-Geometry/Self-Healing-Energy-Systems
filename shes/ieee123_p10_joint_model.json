@@ -1,0 +1,147 @@
+{
+  "assumptions": "Hypothetical scalar M,D, net-power intervals, pickups, time multipliers, delays and piecewise-constant current; conductor-1 terminal-1 feeder proxies.",
+  "counterfactual_backup": "Sustained fault at backup; primary clearing is not simulated as interrupting the backup counterfactual.",
+  "frequency_worst_pass": 1097,
+  "joint_model_approvals": 18,
+  "nominal_false_approval_witnesses": [
+    {
+      "bus": "60",
+      "delay_s": 0.02,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.6,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.08,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.8,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.04,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.8,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.04,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.7,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.04,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.7,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.02,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.8,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.02,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.7,
+      "reset": "full"
+    },
+    {
+      "bus": "60",
+      "delay_s": 0.02,
+      "fault_resistance_ohm": 0.01,
+      "gmin": 0.7,
+      "reset": "full"
+    }
+  ],
+  "physical_certificates_issued": 0,
+  "physical_gate": {
+    "breaker_delays_calibrated": false,
+    "installed_relay_settings_verified": false,
+    "inverter_current_limit_calibrated": false,
+    "phase_continuity_verified": false,
+    "relay_orientation_verified": false,
+    "switching_feasibility_verified": false
+  },
+  "physical_restoration_validated": false,
+  "population": 1440,
+  "seed": 20261023,
+  "settings_per_feeder_fault_case_per_reset": 80,
+  "source_pin": "5005c668a72d20775f4c2d060feebb2866ba1d38",
+  "source_sha256": {
+    "IEEE123Loads.DSS": "fd28f52836205506a1980b52c5a7e12ca585aa626c52a6249502c1c3b2fc2255",
+    "IEEE123Master.dss": "21bfab1a3c956d347dc491436ae839281bf7db4ececc405e10ddeb04d3ab00ec",
+    "IEEE123Regulators.DSS": "cd6ad77980dc018631ce39faab528afce40b0b9a50a6bc1c9ac8049ffb8207d7",
+    "IEEELinecodes.DSS": "4bc8e3a0b24ad7b1cb4321f1c3b6c8458b646dd3a83b3cd11cccc02444624cb2"
+  },
+  "status": "PASS_MODEL_ONLY_PHYSICAL_GATE_BLOCKED",
+  "tables": {
+    "full": {
+      "box": {
+        "FN": 0,
+        "FP": 0,
+        "TN": 475,
+        "TP": 5
+      },
+      "common": {
+        "FN": 0,
+        "FP": 2,
+        "TN": 473,
+        "TP": 5
+      },
+      "nominal": {
+        "FN": 0,
+        "FP": 65,
+        "TN": 410,
+        "TP": 5
+      }
+    },
+    "hold": {
+      "box": {
+        "FN": 0,
+        "FP": 0,
+        "TN": 476,
+        "TP": 4
+      },
+      "common": {
+        "FN": 0,
+        "FP": 5,
+        "TN": 471,
+        "TP": 4
+      },
+      "nominal": {
+        "FN": 0,
+        "FP": 104,
+        "TN": 372,
+        "TP": 4
+      }
+    },
+    "linear": {
+      "box": {
+        "FN": 0,
+        "FP": 0,
+        "TN": 471,
+        "TP": 9
+      },
+      "common": {
+        "FN": 0,
+        "FP": 3,
+        "TN": 468,
+        "TP": 9
+      },
+      "nominal": {
+        "FN": 0,
+        "FP": 64,
+        "TN": 407,
+        "TP": 9
+      }
+    }
+  }
+}
