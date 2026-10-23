@@ -1,0 +1,32 @@
+name: SHES P13 continuous uncertainty theorem audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/robust_continuum_p13.py"
+      - "shes/test_robust_continuum_p13.py"
+      - "shes/p13_continuum_section.tex"
+      - ".github/workflows/shes-p13-continuum.yml"
+permissions:
+  contents: read
+jobs:
+  theorem-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Adversarial continuum theorem regression tests
+        run: python -m unittest shes.test_robust_continuum_p13 -v
+      - name: Independent numerical witness and archive
+        run: |
+          python -m shes.robust_continuum_p13 | tee shes/p13_correlated_witness.json
+          python -m shes.audit_final_p12
+      - name: Archive verified correlated witness
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p13-correlated-interior-counterexample
+          path: shes/p13_correlated_witness.json
+          if-no-files-found: error
