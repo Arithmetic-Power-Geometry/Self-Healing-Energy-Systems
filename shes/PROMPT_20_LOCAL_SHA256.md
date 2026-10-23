@@ -1,10 +1,10 @@
 # P20 recovered local artifact SHA-256 (not yet uploaded to GitHub)
 main.tex daf004e47df33f6411fc6e3ee43b94acd28aa131b2c7e10b8c861b1a3deff509
-anonymous/main.tex 6467ce7b9e1953fff803787f9a58689d7b2fac34ea18e53418c71865aead6aec
+anonymous/main.tex REVISED_ANONYMOUS_SOURCE_HASH_IN_LOCAL_SHA256_P20_TXT
 main.pdf b69f2085cb3d608e4f218626b976b81f2f1621aa6e0836160fd7b6201fa7be4e
-anonymous/main.pdf 9080a9962c9ff8a51299f98770c4983a5447354092fb784bcae72971f61bb29f
+anonymous/main.pdf 2d677a1b7116ac0b3e5cd06fcdf64b48c243f4634f7fe29a7f41ee8ba0826b64
 references.bib 5af33a0e1684482f417f47efa7d71a553888640edf31010c35f8fbb29d6d9460
 figures/pickup_dropout.pdf faf3866bf4e2cc856e70ff704551524eef3ff29bbd44cd0d68ce04a65895efe3
 
 Source archive: SHES_Prompt_20_Final_Manuscript.zip (available in conversation artifacts, not a GitHub commit).
-Four original P12 figure PDF hashes verified unchanged. 22-page author and 22-page anonymous PDFs compiled locally with pdflatex/bibtex8. No complete GitHub PDF CI claim.
+Anonymous version also removes public repository identifiers and identifying CI links. Four original P12 figure PDF hashes verified unchanged. 22-page author and 22-page anonymous PDFs compiled locally with pdflatex/bibtex8. No complete GitHub PDF CI claim.
