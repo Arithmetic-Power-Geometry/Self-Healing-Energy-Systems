@@ -1,5 +1,6 @@
 import copy, unittest
 from run_ieee123_fault_probes import choose_switch, choose_locations, read_fault_current
+from candidate_protection_paths import candidate_paths
 
 class FakeBus:
  Nodes=[1,2,3]
@@ -22,4 +23,10 @@ class Tests(unittest.TestCase):
   with self.assertRaises(ValueError):
    choose_switch([{"name":"X","from":"150","to":"60"}],
     [{"bus":"150"},{"bus":"60"}])
+ def test_candidate_boundaries_not_validated(self):
+  paths=candidate_paths([{"name":"L1","from":"a","to":"b"},
+   {"name":"L2","from":"b","to":"c"}],"a",["c"])
+  self.assertEqual(paths["c"]["candidate_primary_boundary"],"L2")
+  self.assertEqual(paths["c"]["candidate_backup_boundary"],"L1")
+  self.assertFalse(paths["c"]["protection_zone_validated"])
 if __name__=="__main__":unittest.main()
