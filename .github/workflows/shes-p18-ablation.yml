@@ -1,0 +1,62 @@
+name: SHES P18 ablation and stress audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/component_ablation_p18.py"
+      - "shes/test_component_ablation_p18.py"
+      - ".github/workflows/shes-p18-ablation.yml"
+permissions:
+  contents: read
+jobs:
+  ablation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run independent and prior mathematical regression tests
+        run: python -m unittest shes.test_component_ablation_p18 shes.test_unified_benchmark_p17 shes.test_robust_continuum_p13 -v
+      - name: Generate seeded ablation evidence and repeated timings
+        run: python -m shes.component_ablation_p18 --n 90 --repeats 9 --output shes/p18_ablation_evidence.json | tee shes/p18_summary.json
+      - name: Independent evidence and replay validator
+        run: |
+          python - <<'PY'
+          import json
+          from shes.unified_benchmark_p17 import cases,screen
+          from shes.component_ablation_p18 import ABLATIONS,ablated,full
+          d=json.load(open("shes/p18_ablation_evidence.json"))
+          assert d["n"]==90 and d["seed"]==1717
+          assert d["reset_counts"]=={"full":30,"hold":30,"linear":30}
+          data=cases(90,1717)
+          assert d["full_approvals"]==sum(screen(c,"rectangle") for c in data)
+          for name in ABLATIONS:
+              pred=[ablated(c,name) for c in data]
+              fp=sum(p and not full(c) for p,c in zip(pred,data))
+              fn=sum(not p and full(c) for p,c in zip(pred,data))
+              row=d["ablations"][name]
+              assert row["confusion"]["false_approvals"]==fp
+              assert row["confusion"]["conservative_rejections"]==fn
+              assert sum(row["confusion"][k] for k in
+                 ("true_approvals","false_approvals","conservative_rejections","true_rejections"))==90
+              w=row["witness"]
+              if fp:
+                  assert w is not None and w["id"]==next(c["id"] for c,p in zip(data,pred) if p and not full(c))
+              else: assert w is None
+              assert len(d["timing"][name]["samples_ms"])==9
+          assert len(d["timing"]["full"]["samples_ms"])==9
+          assert d["physical_restoration_certificates"]==0
+          assert [s["passes_margin_0_4"] for s in
+            d["correlated_continuum_analytic_counterexample"]["samples"]]==[True,False,True]
+          print("P18 independent evidence replay PASS")
+          PY
+      - name: Upload reproducible evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p18-ablation-evidence
+          path: |
+            shes/p18_ablation_evidence.json
+            shes/p18_summary.json
+          if-no-files-found: error
