@@ -1,0 +1,68 @@
+name: SHES P16 winding and fault phasor audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/winding_fault_p16.py"
+      - "shes/test_winding_fault_p16.py"
+      - ".github/workflows/shes-p16-winding-fault.yml"
+permissions:
+  contents: read
+jobs:
+  winding-fault:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Independent adversarial tests
+        run: python -m unittest shes.test_winding_fault_p16 shes.test_switch_sensitivity_p15 shes.test_phase_topology_p14 -v
+      - name: Pin dss-python
+        run: |
+          python -m pip install dss-python==0.15.7
+          python -c "import importlib.metadata; assert importlib.metadata.version('dss-python')=='0.15.7'"
+      - name: Pin upstream IEEE 123 feeder
+        run: |
+          git clone --filter=blob:none --sparse https://github.com/tshort/OpenDSS.git /tmp/opendss
+          cd /tmp/opendss
+          git sparse-checkout set Distrib/IEEETestCases/123Bus
+          git checkout 5005c668a72d20775f4c2d060feebb2866ba1d38
+          test "$(git rev-parse HEAD)" = "5005c668a72d20775f4c2d060feebb2866ba1d38"
+          cd Distrib/IEEETestCases/123Bus
+          cp IEEELineCodes.DSS IEEELinecodes.DSS
+          cmp IEEELineCodes.DSS IEEELinecodes.DSS
+      - name: Run winding and fault model probes
+        run: python -m shes.winding_fault_p16 --feeder /tmp/opendss/Distrib/IEEETestCases/123Bus --output shes/p16_winding_fault_evidence.json | tee shes/p16_summary.json
+      - name: Independently validate model evidence
+        run: |
+          python - <<'PY'
+          import json,math
+          d=json.load(open("shes/p16_winding_fault_evidence.json"))
+          assert d["upstream_commit"]=="5005c668a72d20775f4c2d060feebb2866ba1d38"
+          assert d["dss_python_expected"]=="0.15.7"
+          assert len(d["winding_metadata"])==8
+          assert len(d["cases"])==4
+          assert not d["transformer_transfer_verified"]
+          assert not d["neutral_grounding_verified"]
+          assert not d["phase_source_reachability_verified"]
+          assert not d["thermal_constraints_verified"]
+          assert not d["installed_ct_polarity_verified"]
+          assert d["physical_restoration_certificates"]==0
+          for c in d["cases"]:
+              assert c["converged"]
+              assert math.isfinite(c["fault_bus_phase_voltage_pu"])
+              for element,item in c["candidate_terminal_currents"].items():
+                  assert len(item["complex_terminal_currents_a"])==2
+                  assert all(math.isfinite(x) for terminal in item["complex_terminal_currents_a"] for conductor in terminal for x in conductor)
+          print("P16 independent evidence validation PASS")
+          PY
+      - name: Upload model evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p16-winding-fault-evidence
+          path: |
+            shes/p16_winding_fault_evidence.json
+            shes/p16_summary.json
+          if-no-files-found: error
