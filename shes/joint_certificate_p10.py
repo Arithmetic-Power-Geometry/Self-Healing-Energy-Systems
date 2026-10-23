@@ -57,7 +57,10 @@ def classify(row,rng,reset):
  return {"bus":row["bus"],"fault_resistance_ohm":row["fault_resistance_ohm"],
   "reset":reset,"gmin":gmin,"delay_s":delay,"frequency_worst_ok":freq_worst,
   "nominal":nominal,"common":common,"box":box,"joint_model_oracle":oracle,
-  "frequency_nominal_ok":freq_nom}
+  "frequency_nominal_ok":freq_nom,
+  "_audit_settings":{"ip":ip,"ib":ib,"pickp":pickp,"pickb":pickb,
+   "tdsp":tdsp,"tdsb":tdsb,"deadp":deadp,"deadb":deadb,
+   "margin":margin,"gmin":gmin,"delay":delay}}
 def matrix(rows,method,reference):
  tp=sum(bool(x[method]) and bool(x[reference]) for x in rows)
  fp=sum(bool(x[method]) and not bool(x[reference]) for x in rows)
@@ -69,6 +72,24 @@ def run(source,seed=20261023,draws=80):
  if len(rows)!=6:raise ValueError("expected six feeder fault cases")
  results=[classify(row,rng,reset) for reset in ("full","hold","linear")
   for row in rows for _ in range(draws)]
+ # Test interior uncertainty points independently of the 16-corner screen.
+ # This is a finite falsification grid, not a proof for the continuum.
+ interior_checked=0;interior_failures=[]
+ for r in results:
+  if not r["joint_model_oracle"]:continue
+  s=r["_audit_settings"]
+  args=tuple(s[k] for k in ("ip","ib","pickp","pickb","tdsp","tdsb","deadp","deadb","margin"))
+  for a in (.25,.5,.75):
+   for b in (.25,.5,.75):
+    gp=s["gmin"]+(1-s["gmin"])*a
+    gb=s["gmin"]+(1-s["gmin"])*b
+    for bp in (0.,s["delay"]*.5,s["delay"]):
+     for bb in (0.,s["delay"]*.5,s["delay"]):
+      interior_checked+=1
+      if not relay_ok(*args,gp,gb,bp,bb,r["reset"]):
+       interior_failures.append({"bus":r["bus"],"fault_resistance_ohm":r["fault_resistance_ohm"],
+        "reset":r["reset"],"gmin":s["gmin"],"gp":gp,"gb":gb,"bp":bp,"bb":bb})
+ for r in results:r.pop("_audit_settings")
  tables={reset:{name:matrix([r for r in results if r["reset"]==reset],
     name,"joint_model_oracle") for name in ("nominal","common","box")}
   for reset in ("full","hold","linear")}
@@ -83,6 +104,10 @@ def run(source,seed=20261023,draws=80):
   "tables":tables,"nominal_false_approval_witnesses":witnesses,
   "frequency_worst_pass":sum(r["frequency_worst_ok"] for r in results),
   "joint_model_approvals":sum(r["joint_model_oracle"] for r in results),
+  "interior_samples_checked":interior_checked,
+  "interior_corner_approval_violations":len(interior_failures),
+  "interior_counterexamples":interior_failures[:12],
+  "corner_completeness_proved":False,
   "physical_gate":gate,"physical_certificates_issued":0,
   "physical_restoration_validated":False,
   "counterfactual_backup":"Sustained fault at backup; primary clearing is not simulated as interrupting the backup counterfactual.",
