@@ -7,7 +7,7 @@ class SyntheticAuditTests(unittest.TestCase):
   names=("independent","interrupted","finite","scalar","rk4")
   original_checks({n:execute(n) for n in names})
  def test_contingency_arithmetic(self):
-  c=original_checks({n:execute(n) for n in ("independent","interrupted","finite","scalar")})["finite_contingency"]
+  c=original_checks({n:execute(n) for n in ("independent","interrupted","finite","scalar","rk4")})["finite_contingency"]
   self.assertEqual(c,{"both":3104,"nominal_only":3530,"robust_only":129,"neither":13237})
  def test_sensitivity_box_soundness(self):
   for g in (.6,.7,.8):
