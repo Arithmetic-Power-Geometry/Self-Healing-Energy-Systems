@@ -1,0 +1,45 @@
+name: SHES P10 joint model certificate audit
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "shes/joint_certificate_p10.py"
+      - "shes/test_joint_certificate_p10.py"
+      - "shes/validate_joint_p10.py"
+      - ".github/workflows/shes-p10-joint.yml"
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile and test
+        run: |
+          python -m py_compile shes/joint_certificate_p10.py shes/validate_joint_p10.py
+          python -m unittest discover -s shes -p test_joint_certificate_p10.py -v
+      - name: Evaluate joint frequency and protection model
+        run: python -m shes.joint_certificate_p10
+      - name: Independently validate all results
+        run: python shes/validate_joint_p10.py shes/ieee123_p10_joint_model.json
+      - name: Commit validated evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shes/ieee123_p10_joint_model.json
+          if ! git diff --cached --quiet; then
+            git commit -m "SHES P10: archive independently validated joint model evidence"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Archive diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shes-p10-joint-model-evidence
+          path: shes/ieee123_p10_joint_model.json
+          if-no-files-found: warn
