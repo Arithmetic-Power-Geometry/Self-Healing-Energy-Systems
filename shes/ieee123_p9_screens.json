@@ -1,0 +1,141 @@
+{
+  "counterexamples": [
+    {
+      "backup_terminal_a": 3578.9252706448997,
+      "bus": "60",
+      "delay": 0.04,
+      "draw": 61,
+      "gmin": 0.8,
+      "primary_terminal_a": 3578.9256688650694,
+      "resistance": 0.01
+    },
+    {
+      "backup_terminal_a": 3578.9252706448997,
+      "bus": "60",
+      "delay": 0.08,
+      "draw": 170,
+      "gmin": 0.8,
+      "primary_terminal_a": 3578.9256688650694,
+      "resistance": 0.01
+    },
+    {
+      "backup_terminal_a": 3366.8243247749147,
+      "bus": "60",
+      "delay": 0.08,
+      "draw": 2,
+      "gmin": 0.8,
+      "primary_terminal_a": 3366.8246897065187,
+      "resistance": 0.1
+    },
+    {
+      "backup_terminal_a": 3366.8243247749147,
+      "bus": "60",
+      "delay": 0.08,
+      "draw": 119,
+      "gmin": 0.8,
+      "primary_terminal_a": 3366.8246897065187,
+      "resistance": 0.1
+    },
+    {
+      "backup_terminal_a": 3366.8243247749147,
+      "bus": "60",
+      "delay": 0.02,
+      "draw": 195,
+      "gmin": 0.8,
+      "primary_terminal_a": 3366.8246897065187,
+      "resistance": 0.1
+    }
+  ],
+  "draws_per_fault_case": 200,
+  "frequency_certificate_verified": false,
+  "installed_relay_settings_verified": false,
+  "interpretation": "Conductor-1 terminal-1 model proxies and hypothetical settings; not a joint feeder restoration safety certificate.",
+  "phase_continuity_verified": false,
+  "population": 1200,
+  "relay_current_orientation_verified": false,
+  "restoration_safety_verified": false,
+  "seed": 20261023,
+  "sensitivity": {
+    "0.6": {
+      "box": 3,
+      "common": 5,
+      "full_reset_trace": 9,
+      "nominal": 74
+    },
+    "0.7": {
+      "box": 9,
+      "common": 11,
+      "full_reset_trace": 17,
+      "nominal": 72
+    },
+    "0.8": {
+      "box": 12,
+      "common": 15,
+      "full_reset_trace": 15,
+      "nominal": 67
+    }
+  },
+  "source_pin": "5005c668a72d20775f4c2d060feebb2866ba1d38",
+  "source_sha256": {
+    "IEEE123Loads.DSS": "fd28f52836205506a1980b52c5a7e12ca585aa626c52a6249502c1c3b2fc2255",
+    "IEEE123Master.dss": "21bfab1a3c956d347dc491436ae839281bf7db4ececc405e10ddeb04d3ab00ec",
+    "IEEE123Regulators.DSS": "cd6ad77980dc018631ce39faab528afce40b0b9a50a6bc1c9ac8049ffb8207d7",
+    "IEEELinecodes.DSS": "4bc8e3a0b24ad7b1cb4321f1c3b6c8458b646dd3a83b3cd11cccc02444624cb2"
+  },
+  "status": "PASS_HYPOTHETICAL_SCREENS_ONLY",
+  "switching_feasibility_verified": false,
+  "tables": {
+    "constant_corner_oracle": {
+      "box": {
+        "FN": 0,
+        "FP": 0,
+        "TN": 1176,
+        "TP": 24
+      },
+      "common": {
+        "FN": 0,
+        "FP": 7,
+        "TN": 1169,
+        "TP": 24
+      },
+      "full_reset_trace": {
+        "FN": 8,
+        "FP": 25,
+        "TN": 1151,
+        "TP": 16
+      },
+      "nominal": {
+        "FN": 0,
+        "FP": 189,
+        "TN": 987,
+        "TP": 24
+      }
+    },
+    "full_reset_trace": {
+      "box": {
+        "FN": 25,
+        "FP": 8,
+        "TN": 1151,
+        "TP": 16
+      },
+      "common": {
+        "FN": 25,
+        "FP": 15,
+        "TN": 1144,
+        "TP": 16
+      },
+      "full_reset_trace": {
+        "FN": 0,
+        "FP": 0,
+        "TN": 1159,
+        "TP": 41
+      },
+      "nominal": {
+        "FN": 0,
+        "FP": 172,
+        "TN": 987,
+        "TP": 41
+      }
+    }
+  }
+}
